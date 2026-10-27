@@ -1,0 +1,7 @@
+{
+  "strategy": "dimensions",
+  "dimensions": [
+    { "id": "pa", "name": "积极情绪 PA" },
+    { "id": "na", "name": "消极情绪 NA" }
+  ]
+}

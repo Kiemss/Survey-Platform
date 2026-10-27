@@ -1,0 +1,12 @@
+[
+  { "id": "s1", "type": "scale", "scalePoints": 4, "scaleLabels": ["很不符合", "不符合", "符合", "非常符合"], "text": "总的来说，我认为自己是个有价值的人，至少不比别人差" },
+  { "id": "s2", "type": "scale", "scalePoints": 4, "scaleLabels": ["很不符合", "不符合", "符合", "非常符合"], "text": "我觉得自己有许多优点" },
+  { "id": "s3", "type": "scale", "scalePoints": 4, "scaleLabels": ["很不符合", "不符合", "符合", "非常符合"], "text": "归根结底，我倾向于认为自己是个失败者", "reverse": true },
+  { "id": "s4", "type": "scale", "scalePoints": 4, "scaleLabels": ["很不符合", "不符合", "符合", "非常符合"], "text": "我能像大多数人一样把事情做好" },
+  { "id": "s5", "type": "scale", "scalePoints": 4, "scaleLabels": ["很不符合", "不符合", "符合", "非常符合"], "text": "我觉得自己没有什么值得自豪的地方", "reverse": true },
+  { "id": "s6", "type": "scale", "scalePoints": 4, "scaleLabels": ["很不符合", "不符合", "符合", "非常符合"], "text": "我对自己持肯定态度" },
+  { "id": "s7", "type": "scale", "scalePoints": 4, "scaleLabels": ["很不符合", "不符合", "符合", "非常符合"], "text": "总的来说，我对自己是满意的" },
+  { "id": "s8", "type": "scale", "scalePoints": 4, "scaleLabels": ["很不符合", "不符合", "符合", "非常符合"], "text": "我希望我能为自己赢得更多尊重", "reverse": true },
+  { "id": "s9", "type": "scale", "scalePoints": 4, "scaleLabels": ["很不符合", "不符合", "符合", "非常符合"], "text": "我确实时常感到自己毫无用处", "reverse": true },
+  { "id": "s10", "type": "scale", "scalePoints": 4, "scaleLabels": ["很不符合", "不符合", "符合", "非常符合"], "text": "我时常认为自己一无是处", "reverse": true }
+]

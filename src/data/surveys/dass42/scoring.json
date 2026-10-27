@@ -1,0 +1,11 @@
+{
+  "strategy": "thresholds",
+  "key": "total",
+  "bands": [
+    { "min": 0, "max": 72, "resultId": "normal" },
+    { "min": 73, "max": 82, "resultId": "mild" },
+    { "min": 83, "max": 101, "resultId": "moderate" },
+    { "min": 102, "max": 121, "resultId": "severe" },
+    { "min": 122, "max": 168, "resultId": "extremely_severe" }
+  ]
+}

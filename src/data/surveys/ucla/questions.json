@@ -1,0 +1,22 @@
+[
+  { "id": "s1", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到与周围的人相处融洽、合拍吗？", "reverse": true },
+  { "id": "s2", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到缺少同伴吗？" },
+  { "id": "s3", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到没有人可以求助吗？" },
+  { "id": "s4", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到孤单吗？" },
+  { "id": "s5", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到自己是某个朋友圈中的一员吗？", "reverse": true },
+  { "id": "s6", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到和周围的人有许多共同点吗？", "reverse": true },
+  { "id": "s7", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到和任何人都亲近不起来吗？" },
+  { "id": "s8", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到自己的兴趣和想法与周围的人不同吗？" },
+  { "id": "s9", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到自己外向而友善吗？", "reverse": true },
+  { "id": "s10", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到与人们很亲近吗？", "reverse": true },
+  { "id": "s11", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到自己被冷落（排除在外）吗？" },
+  { "id": "s12", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到自己与别人的交往没有意义吗？" },
+  { "id": "s13", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到没有人真正了解你吗？" },
+  { "id": "s14", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到自己被孤立吗？" },
+  { "id": "s15", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你想找人做伴时，常能找到吗？", "reverse": true },
+  { "id": "s16", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到有人真正理解你吗？", "reverse": true },
+  { "id": "s17", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到羞怯吗？" },
+  { "id": "s18", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到身边虽然有人却不关心你吗？" },
+  { "id": "s19", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到有人可以与你交谈吗？", "reverse": true },
+  { "id": "s20", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "很少", "有时", "一直"], "text": "你常感到有可以求助的人吗？", "reverse": true }
+]

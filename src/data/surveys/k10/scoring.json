@@ -1,0 +1,10 @@
+{
+  "strategy": "thresholds",
+  "key": "total",
+  "bands": [
+    { "min": 0, "max": 19, "resultId": "low" },
+    { "min": 20, "max": 24, "resultId": "mild" },
+    { "min": 25, "max": 29, "resultId": "moderate" },
+    { "min": 30, "max": 50, "resultId": "high" }
+  ]
+}

@@ -1,0 +1,16 @@
+[
+  { "id": "q1", "type": "scale", "text": "最近两周里，我对未来感到乐观。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q2", "type": "scale", "text": "最近两周里，我觉得自己有用。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q3", "type": "scale", "text": "最近两周里，我感到放松。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q4", "type": "scale", "text": "最近两周里，我对别人感兴趣。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q5", "type": "scale", "text": "最近两周里，我有富余的精力。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q6", "type": "scale", "text": "最近两周里，我能很好地应对遇到的问题。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q7", "type": "scale", "text": "最近两周里，我思路清晰。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q8", "type": "scale", "text": "最近两周里，我对自己感觉良好。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q9", "type": "scale", "text": "最近两周里，我感到与他人的关系亲近。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q10", "type": "scale", "text": "最近两周里，我感到自信。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q11", "type": "scale", "text": "最近两周里，我能对事情自己拿定主意。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q12", "type": "scale", "text": "最近两周里，我感受到对别人的爱。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q13", "type": "scale", "text": "最近两周里，我对新事物感兴趣。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] },
+  { "id": "q14", "type": "scale", "text": "最近两周里，我感到愉快、开心。", "scalePoints": 5, "scaleLabels": ["完全没有", "偶尔", "有些时候", "经常", "总是"] }
+]

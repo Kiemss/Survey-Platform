@@ -1,0 +1,17 @@
+[
+  { "id": "q1", "type": "single", "text": "胃痛。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q2", "type": "single", "text": "背痛。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q3", "type": "single", "text": "手臂、腿或关节疼痛。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q4", "type": "single", "text": "痛经或其他月经相关问题（男性或无此情况者请选「没有此困扰」）。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q5", "type": "single", "text": "头痛。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q6", "type": "single", "text": "胸痛。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q7", "type": "single", "text": "头晕。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q8", "type": "single", "text": "一阵阵昏厥或快要晕倒的感觉。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q9", "type": "single", "text": "感到心跳得厉害、心慌。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q10", "type": "single", "text": "气短、呼吸不畅。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q11", "type": "single", "text": "性生活中出现疼痛或其他不适。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q12", "type": "single", "text": "便秘、腹泻或大便不规律。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q13", "type": "single", "text": "恶心、胀气或消化不良。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q14", "type": "single", "text": "感到疲劳、没有精力。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] },
+  { "id": "q15", "type": "single", "text": "入睡困难或睡眠不好。", "options": [{ "label": "没有此困扰", "score": { "total": 0 } }, { "label": "有点困扰", "score": { "total": 1 } }, { "label": "困扰很大", "score": { "total": 2 } }] }
+]

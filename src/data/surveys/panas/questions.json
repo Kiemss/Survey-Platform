@@ -1,0 +1,22 @@
+[
+  { "id": "s1", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「感兴趣」的程度是？", "dimension": "pa" },
+  { "id": "s2", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「心烦」的程度是？", "dimension": "na" },
+  { "id": "s3", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「兴奋」的程度是？", "dimension": "pa" },
+  { "id": "s4", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「懊恼」的程度是？", "dimension": "na" },
+  { "id": "s5", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「强壮、有力量」的程度是？", "dimension": "pa" },
+  { "id": "s6", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「内疚」的程度是？", "dimension": "na" },
+  { "id": "s7", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「惊恐」的程度是？", "dimension": "na" },
+  { "id": "s8", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「敌意」的程度是？", "dimension": "na" },
+  { "id": "s9", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「热情」的程度是？", "dimension": "pa" },
+  { "id": "s10", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「自豪」的程度是？", "dimension": "pa" },
+  { "id": "s11", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「易怒」的程度是？", "dimension": "na" },
+  { "id": "s12", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「警觉、机敏」的程度是？", "dimension": "pa" },
+  { "id": "s13", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「羞愧」的程度是？", "dimension": "na" },
+  { "id": "s14", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「备受鼓舞」的程度是？", "dimension": "pa" },
+  { "id": "s15", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「紧张」的程度是？", "dimension": "na" },
+  { "id": "s16", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「果断、坚定」的程度是？", "dimension": "pa" },
+  { "id": "s17", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「专注、留心」的程度是？", "dimension": "pa" },
+  { "id": "s18", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「焦躁不安」的程度是？", "dimension": "na" },
+  { "id": "s19", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「活跃」的程度是？", "dimension": "pa" },
+  { "id": "s20", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "比较少", "中等程度", "比较多", "非常多"], "text": "最近一周，你感到「害怕」的程度是？", "dimension": "na" }
+]

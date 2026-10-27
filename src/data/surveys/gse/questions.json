@@ -1,0 +1,12 @@
+[
+  { "id": "s1", "type": "scale", "scalePoints": 4, "scaleLabels": ["完全不正确", "有点正确", "多数正确", "完全正确"], "text": "如果我尽力去做的话，我总是能够解决问题的" },
+  { "id": "s2", "type": "scale", "scalePoints": 4, "scaleLabels": ["完全不正确", "有点正确", "多数正确", "完全正确"], "text": "即使别人反对我，我仍有办法取得我所要的" },
+  { "id": "s3", "type": "scale", "scalePoints": 4, "scaleLabels": ["完全不正确", "有点正确", "多数正确", "完全正确"], "text": "对我来说，坚持理想和达成目标是轻而易举的" },
+  { "id": "s4", "type": "scale", "scalePoints": 4, "scaleLabels": ["完全不正确", "有点正确", "多数正确", "完全正确"], "text": "我自信能有效地应付任何突如其来的事情" },
+  { "id": "s5", "type": "scale", "scalePoints": 4, "scaleLabels": ["完全不正确", "有点正确", "多数正确", "完全正确"], "text": "以我的才智，我定能应付意料之外的情况" },
+  { "id": "s6", "type": "scale", "scalePoints": 4, "scaleLabels": ["完全不正确", "有点正确", "多数正确", "完全正确"], "text": "如果我付出必要的努力，我一定能解决大多数的难题" },
+  { "id": "s7", "type": "scale", "scalePoints": 4, "scaleLabels": ["完全不正确", "有点正确", "多数正确", "完全正确"], "text": "我能冷静地面对困难，因为我可信赖自己处理问题的能力" },
+  { "id": "s8", "type": "scale", "scalePoints": 4, "scaleLabels": ["完全不正确", "有点正确", "多数正确", "完全正确"], "text": "面对一个难题时，我通常能找到几个解决方法" },
+  { "id": "s9", "type": "scale", "scalePoints": 4, "scaleLabels": ["完全不正确", "有点正确", "多数正确", "完全正确"], "text": "有麻烦的时候，我通常能想到一些应付的方法" },
+  { "id": "s10", "type": "scale", "scalePoints": 4, "scaleLabels": ["完全不正确", "有点正确", "多数正确", "完全正确"], "text": "无论什么事在我身上发生，我都能够应付自如" }
+]

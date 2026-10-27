@@ -77,6 +77,9 @@ export const CATEGORIES: SurveyCategory[] = [
   { id: 'stress', name: '压力', group: 'mental' },
   { id: 'aggression', name: '攻击性', group: 'mental' },
   { id: 'psychology', name: '综合筛查', group: 'mental' },
+  { id: 'somatic', name: '躯体化', group: 'mental' },
+  { id: 'wellbeing', name: '幸福感', group: 'mental' },
+  { id: 'self', name: '自我探索', group: 'mental' },
   // 学生专区
   { id: 'primary', name: '小学', group: 'student' },
   { id: 'secondary', name: '中学', group: 'student' },
