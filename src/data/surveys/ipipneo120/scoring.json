@@ -1,0 +1,10 @@
+{
+  "strategy": "dimensions",
+  "dimensions": [
+    { "id": "E", "name": "外向性 Extraversion" },
+    { "id": "A", "name": "宜人性 Agreeableness" },
+    { "id": "C", "name": "尽责性 Conscientiousness" },
+    { "id": "N", "name": "神经质 Neuroticism" },
+    { "id": "O", "name": "开放性 Openness" }
+  ]
+}

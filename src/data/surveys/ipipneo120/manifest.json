@@ -1,0 +1,11 @@
+{
+  "id": "ipipneo120",
+  "name": "大五人格测评（IPIP-NEO 120题）",
+  "description": "IPIP-NEO 大五人格模型 120 题版本：五维度（开放性/尽责性/外向性/宜人性/神经质）均衡覆盖，公版学术量表。",
+  "estimatedMinutes": 25,
+  "disclaimer": "题库来自 IPIP（International Personality Item Pool，国际人格题库），属公有领域（public domain）。本测评反映自我报告的人格倾向，人格特质无好坏之分，结果仅供自我探索参考，不构成专业心理评估。",
+  "version": "1.0.0",
+  "category": "personality",
+  "family": "bigfive",
+  "variant": "完整版 120 题"
+}
