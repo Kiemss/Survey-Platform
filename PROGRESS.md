@@ -5,16 +5,35 @@
 
 ---
 
-## 当前状态：Cloudflare 部署配置完成，等待用户点击 Deploy
+## 当前状态：v0.1 已上线 ✅
 
 - **最新版本**：v0.1.0
-- **构建状态**：✅ `npm run build` 通过
-- **远程仓库**：https://github.com/Kiemss/Survey-Platform （main 已同步至 770e9b9）
-- **阻塞问题**：🟡 用户在 Cloudflare「Workers 部署」页点击 Deploy 即可完成上线
+- **线上地址**：https://survey-platform.zhengxinghuo5.workers.dev （已在 Cloudflare 启用 workers.dev 路由）
+- **远程仓库**：https://github.com/Kiemss/Survey-Platform
+- **部署链路**：push main → Cloudflare Workers Builds 自动构建（`npm run build`）→ `wrangler deploy`（静态资产 + SPA 路由）
+- **阻塞问题**：🟢 无
+- **自定义域名**：✅ `https://greensail.dpdns.org` 已绑定并生效（workers.dev 仍可用）
 
 ---
 
-## 2026-10-27（第四次更新：适配 Cloudflare 新版 Workers 部署流程）
+## 2026-10-27（第五次更新：v0.2 启动 + 自定义域名绑定）
+
+### 已完成
+
+1. **自定义域名绑定成功**：`https://greensail.dpdns.org`（DigitalPlat 注册 → Cloudflare 托管 → 绑定到 Worker，Production 环境）；workers.dev 地址仍可用。
+2. **新增设置模块** [settings.ts](src/engine/settings.ts)：基础设置客户端持久化（localStorage，key `survey-settings`），后续设置项在此扩展。
+3. **自动下一题**（默认开）：
+   - 答题后 350ms 自动跳下一题（给选中态留视觉反馈），最后一题不自动跳（等待提交）；
+   - 答题页右上角「自动下一题：开/关」切换按钮，状态持久化；
+   - 手动翻题/离开页面时取消已排队的自动跳转，避免连跳。
+4. 已推送（`9c1b7b1`），构建通过，Cloudflare 自动重新部署中。
+
+### 待办（下一步，v0.2 剩余）
+
+1. 结果分享图（canvas 导出 PNG）
+2. 历史记录页（查看/删除本机历史）
+3. 深色模式（settings.ts 加 theme 字段）
+4. 移动端适配细调
 
 ### 已完成
 
@@ -83,6 +102,7 @@
 |---|---|---|
 | npm 全局缓存目录 `F:\Program\NodeJsPath\node_cache` 无写权限 | ✅ 绕过 | 本次安装使用 `--cache %TEMP%\npm-cache`；建议执行 `npm config set cache "$env:LOCALAPPDATA\npm-cache"` 永久修复 |
 | 点击量表后页面白屏 | ✅ 已修复 | 根因与修复见上方「第二次更新」 |
+| Cloudflare 部署失败：`Invalid _redirects configuration ... Infinite loop` | ✅ 已修复 | 构建正常，部署阶段 wrangler 把 `public/_redirects` 当 Workers 路由规则解析，Pages 写法 `/* /index.html 200` 在 Workers 规则引擎中无限循环；SPA 兜底已由 wrangler.jsonc 的 `not_found_handling` 承担，删除该文件（提交 961b5d3） |
 
 ### 待办（下一步）
 
@@ -94,7 +114,7 @@
 | 里程碑 | 状态 |
 |---|---|
 | v0.1 MVP（引擎 + 2 量表 + 本地跑通） | ✅ 完成（已浏览器验证） |
-| v0.1 上线（GitHub + Cloudflare Pages） | 🔶 GitHub 已完成，Pages 配置中 |
+| v0.1 上线（GitHub + Cloudflare） | ✅ 完成（workers.dev 已启用，公网可访问） |
 | v0.2 体验增强（分享图/历史页/深色模式） | ⬜ 未开始 |
 | v0.3 量表扩充（BFI-44、SCL-90、自定义计分） | ⬜ 未开始 |
 | v1.0 云端统计（Workers + D1，可选） | ⬜ 未开始 |
