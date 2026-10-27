@@ -1,9 +1,0 @@
-{
-  "id": "idaq",
-  "name": "拟人化倾向测试（IDAQ）",
-  "description": "基于 Waytz 等编制的个体差异拟人化问卷（IDAQ）构念改编，测你会把多少「人心」投射到科技、动物与自然上：手机会不会闹脾气？蚊子有没有想法？宇宙是否自有安排？24 题，看看你的拟人化雷达在哪个领域最灵敏。",
-  "estimatedMinutes": 5,
-  "disclaimer": "本测试基于公开发表的 Individual Differences in Anthropomorphism Questionnaire（Waytz, Cacioppo & Epley, 2010）构念改编，并结合 AI 时代场景自编补充条目，分型为参考结果。拟人化是一种正常的认知倾向，无好坏之分，本测试仅供自我探索与娱乐，不构成任何评估或诊断。",
-  "version": "1.0.0",
-  "category": "ai"
-}
