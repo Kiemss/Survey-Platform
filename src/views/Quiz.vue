@@ -192,7 +192,7 @@ async function submit() {
     <div class="nav">
       <button class="btn ghost" :disabled="index === 0" @click="prev">上一题</button>
       <button
-        v-if="index < questions.length - 1"
+        v-if="index < questions.length - 1 && !sheetOpen"
         class="btn"
         :disabled="currentAnswer === undefined"
         @click="next"
