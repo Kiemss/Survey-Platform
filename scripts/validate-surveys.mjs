@@ -159,6 +159,36 @@ function validateScoring(surveyId, scoring, resultsKeys) {
     return keys
   }
 
+  if (scoring.strategy === 'quadrant') {
+    const quads = scoring.quadrant ?? {}
+    const dims = quads.dimensions ?? []
+    if (dims.length !== 2) {
+      errors.push(`${surveyId}/scoring.json: quadrant 策略需要恰好 2 个 dimensions`)
+      return new Set()
+    }
+    const keys = new Set()
+    for (const dim of dims) {
+      if (!dim.id || !dim.name || typeof dim.cutoff !== 'number') {
+        errors.push(`${surveyId}/scoring.json: quadrant 每个维度需 id/name/cutoff`)
+      }
+      // quadrant 策略按维度 id 汇总计分，维度键视为被策略消费
+      keys.add(dim.id)
+    }
+    for (const [combo, rid] of Object.entries(quads.map ?? {})) {
+      if (combo.length !== 2) {
+        errors.push(`${surveyId}/scoring.json: quadrant map 键 "${combo}" 应为两字符组合`)
+      }
+      if (!resultsKeys.has(rid)) {
+        errors.push(`${surveyId}: quadrant map "${combo}" 指向的结果 "${rid}" 缺少文案`)
+      }
+      keys.add(rid)
+    }
+    if (Object.keys(quads.map ?? {}).length !== 4) {
+      errors.push(`${surveyId}/scoring.json: quadrant map 应覆盖全部 4 种组合`)
+    }
+    return keys
+  }
+
   errors.push(`${surveyId}/scoring.json: 未知 strategy "${scoring.strategy}"`)
   return new Set()
 }

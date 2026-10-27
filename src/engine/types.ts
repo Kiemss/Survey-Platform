@@ -52,7 +52,7 @@ export interface Question {
 
 /** scoring.json：计分与结果判定规则 */
 export interface ScoringConfig {
-  strategy: 'letter-pairs' | 'thresholds' | 'dimensions'
+  strategy: 'letter-pairs' | 'thresholds' | 'dimensions' | 'quadrant'
   /**
    * letter-pairs：维度配对，如 [["E","I"],["S","N"]]。
    * 每对取得分高者为结果字母，按顺序拼接成结果 id（如 "INTJ"）
@@ -70,6 +70,16 @@ export interface ScoringConfig {
    * 结果文案需覆盖全部维度 id
    */
   dimensions?: { id: string; name: string }[]
+
+  /**
+   * quadrant：两个独立维度构成四象限（如依恋类型的焦虑×回避）。
+   * 每个维度按理论满分归一化，与 cutoff 比较；高/低组合查 map 得 resultId。
+   * map 键为「维度1首字母大小写 + 维度2首字母」如 "aA"（低焦虑高回避）
+   */
+  quadrant?: {
+    dimensions: { id: string; name: string; cutoff: number }[]
+    map: Record<string, string>
+  }
 }
 
 /** results.json：结果条目。key 为 resultId */

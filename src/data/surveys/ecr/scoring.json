@@ -1,0 +1,15 @@
+{
+  "strategy": "quadrant",
+  "quadrant": {
+    "dimensions": [
+      { "id": "anxiety", "name": "依恋焦虑", "cutoff": 50 },
+      { "id": "avoid", "name": "依恋回避", "cutoff": 50 }
+    ],
+    "map": {
+      "aa": "secure",
+      "Aa": "preoccupied",
+      "aA": "dismissive",
+      "AA": "fearful"
+    }
+  }
+}

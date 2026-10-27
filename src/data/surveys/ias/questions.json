@@ -1,0 +1,17 @@
+[
+  { "id": "i1", "type": "scale", "text": "即使在非正式的聚会上，我也常感到紧张。" },
+  { "id": "i2", "type": "scale", "text": "与别人在一起时，我通常感到自在。", "reverse": true },
+  { "id": "i3", "type": "scale", "text": "与异性交谈时，我通常感到轻松自如。", "reverse": true },
+  { "id": "i4", "type": "scale", "text": "当我必须与老师、上司等权威人士交谈时，我会感到紧张。" },
+  { "id": "i5", "type": "scale", "text": "即使气氛有些紧张，我与别人相处也没有什么困难。", "reverse": true },
+  { "id": "i6", "type": "scale", "text": "在聚会和其他社交场合，我经常感到紧张。" },
+  { "id": "i7", "type": "scale", "text": "与人交谈时，我常常担心给对方留下不好的印象。" },
+  { "id": "i8", "type": "scale", "text": "在一群不太熟悉的人中间，我会感到紧张。" },
+  { "id": "i9", "type": "scale", "text": "我觉得主动和陌生人攀谈对我来说不成问题。", "reverse": true },
+  { "id": "i10", "type": "scale", "text": "给异性打电话或接异性打来的电话时，我会感到紧张。" },
+  { "id": "i11", "type": "scale", "text": "和初次见面的人聊天，我会感到不自在。" },
+  { "id": "i12", "type": "scale", "text": "在小组或集体讨论中发言时，我会感到紧张。" },
+  { "id": "i13", "type": "scale", "text": "即使成为大家关注的焦点，我也觉得没什么好紧张的。", "reverse": true },
+  { "id": "i14", "type": "scale", "text": "与刚认识的人相处，我通常很快就能放松下来。", "reverse": true },
+  { "id": "i15", "type": "scale", "text": "参加需要主动结识新朋友的社交活动时，我会感到紧张不安。" }
+]

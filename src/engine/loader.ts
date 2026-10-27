@@ -137,6 +137,20 @@ export function computeResult(
       }
     }
     resultId = topKey
+  } else if (cfg.strategy === 'quadrant') {
+    // 四象限：两独立维度归一化后按 cutoff 分高低，查 map
+    percentages = {}
+    let id = ''
+    const quads = cfg.quadrant?.dimensions ?? []
+    quads.forEach((dim, i) => {
+      const qCount = pkg.questions.filter((q) => q.dimension === dim.id).length
+      const max = qCount * (pkg.questions.find((q) => q.dimension === dim.id)?.scalePoints ?? 5)
+      const pct = max > 0 ? Math.round(((scores[dim.id] ?? 0) / max) * 100) : 0
+      percentages[dim.id] = pct
+      id += pct >= dim.cutoff ? dim.id[0].toUpperCase() : dim.id[0].toLowerCase()
+      void i
+    })
+    resultId = cfg.quadrant?.map?.[id] ?? id
   } else {
     const key = cfg.key ?? 'total'
     const total = scores[key] ?? 0

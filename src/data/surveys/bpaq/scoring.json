@@ -1,0 +1,9 @@
+{
+  "strategy": "dimensions",
+  "dimensions": [
+    { "id": "physical", "name": "身体攻击 Physical Aggression" },
+    { "id": "verbal", "name": "言语攻击 Verbal Aggression" },
+    { "id": "anger", "name": "愤怒 Anger" },
+    { "id": "hostility", "name": "敌意 Hostility" }
+  ]
+}
