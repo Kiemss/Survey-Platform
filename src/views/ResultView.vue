@@ -4,12 +4,15 @@ import { useRoute } from 'vue-router'
 import { getSurveyPackage } from '../engine/loader'
 import { analytics } from '../engine/analytics'
 import ScoreGauge from '../components/ScoreGauge.vue'
+import { shareResultCard, type ShareOutcome } from '../engine/share'
+import { setMeta } from '../engine/meta'
 import type { SurveyResult } from '../engine/types'
 
 const route = useRoute()
 const surveyId = route.params.id as string
 
 const pkg = getSurveyPackage(surveyId)
+setMeta(`${pkg.manifest.name} · 测评结果`)
 
 // 优先取刚提交的结果，否则回退到本机历史
 const result = computed<SurveyResult | null>(() => {
@@ -72,6 +75,21 @@ const gaugeBands = computed(() =>
 )
 const showGauge = computed(() => gaugeBands.value.length > 0 && !!result.value)
 const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total'] ?? 0)
+
+// 分享结果图：系统分享面板（移动端）优先，桌面端兜底下载
+const shareNote = ref('')
+const sharing = ref(false)
+async function share() {
+  if (!result.value || sharing.value) return
+  sharing.value = true
+  shareNote.value = ''
+  try {
+    const outcome: ShareOutcome = await shareResultCard(pkg, result.value)
+    if (outcome === 'downloaded') shareNote.value = '已保存分享图到本地'
+  } finally {
+    sharing.value = false
+  }
+}
 </script>
 
 <template>
@@ -139,9 +157,13 @@ const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total
     <p v-if="pkg.manifest.disclaimer" class="disclaimer">{{ pkg.manifest.disclaimer }}</p>
 
     <div class="actions">
+      <button class="btn" :disabled="sharing" @click="share">
+        {{ sharing ? '生成中…' : '分享结果图' }}
+      </button>
       <RouterLink class="btn ghost" :to="`/survey/${surveyId}`">再测一次</RouterLink>
       <RouterLink class="btn ghost" to="/">返回首页</RouterLink>
     </div>
+    <p v-if="shareNote" class="share-note">{{ shareNote }}</p>
   </div>
 
   <div v-else>
@@ -221,6 +243,11 @@ const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+}
+.share-note {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 10px;
 }
 .btn.ghost {
   background: var(--card);

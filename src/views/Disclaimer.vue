@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { setMeta } from '../engine/meta'
+
+setMeta('免责声明', '绿帆心理测评的免责声明：站内量表仅供自我探索参考，不构成医学诊断。')
 const hotline = '全国心理援助热线：12356（或北京 010-82951332）'
 </script>
 

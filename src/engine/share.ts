@@ -1,13 +1,16 @@
+import QRCode from 'qrcode'
 import type { SurveyPackage, SurveyResult } from './types'
 
 /**
- * 结果分享图：canvas 绘制结果卡片并导出 PNG 下载。
- * 固定浅色视觉（分享图脱离页面主题，保证任何环境下观感一致）。
+ * 结果分享图：canvas 绘制结果卡片（含右下角二维码），优先调起系统分享面板
+ * （微信/QQ/微博等均走系统分享），不支持时兜底下载 PNG。
+ * 固定品牌绿视觉（分享图脱离页面主题，保证任何环境下观感一致）。
  */
 
 const W = 640
-const H = 800
+const H = 840
 const SCALE = 2 // 2x 导出保证清晰度
+const BRAND = '绿帆心理测评'
 
 function roundRect(
   ctx: CanvasRenderingContext2D,
@@ -45,23 +48,27 @@ function wrapText(
   return lines
 }
 
-export function drawShareCard(pkg: SurveyPackage, result: SurveyResult): string {
+/** 生成带二维码的结果分享图 */
+export async function drawShareCard(
+  pkg: SurveyPackage,
+  result: SurveyResult,
+): Promise<HTMLCanvasElement> {
   const canvas = document.createElement('canvas')
   canvas.width = W * SCALE
   canvas.height = H * SCALE
   const ctx = canvas.getContext('2d')!
   ctx.scale(SCALE, SCALE)
 
-  // 背景
+  // 背景（品牌绿渐变）
   const grad = ctx.createLinearGradient(0, 0, W, H)
-  grad.addColorStop(0, '#5b6ff0')
-  grad.addColorStop(1, '#8a5cf6')
+  grad.addColorStop(0, '#2f6f4f')
+  grad.addColorStop(1, '#67a982')
   ctx.fillStyle = grad
   ctx.fillRect(0, 0, W, H)
 
-  // 白色主卡片
+  // 白色主卡片（底部留出二维码区域）
   ctx.fillStyle = '#ffffff'
-  roundRect(ctx, 36, 36, W - 72, H - 72, 24)
+  roundRect(ctx, 36, 36, W - 72, H - 150, 24)
   ctx.fill()
 
   let y = 108
@@ -80,7 +87,7 @@ export function drawShareCard(pkg: SurveyPackage, result: SurveyResult): string 
   const title = pkg.results[result.resultId]?.title ?? ''
   if (title) {
     y += 52
-    ctx.fillStyle = '#5b6ff0'
+    ctx.fillStyle = '#2f6f4f'
     ctx.font = '700 30px "PingFang SC", "Microsoft YaHei", sans-serif'
     const lines = wrapText(ctx, title, W - 160)
     for (const line of lines.slice(0, 2)) {
@@ -89,62 +96,138 @@ export function drawShareCard(pkg: SurveyPackage, result: SurveyResult): string 
     }
   }
 
-  // 维度条：letter-pairs 用百分比对，其余用维度得分
+  ctx.textAlign = 'left'
   const barX = 120
   const barW = W - 240
-  y += 26
-  ctx.textAlign = 'left'
 
-  const bars: { label: string; pct: number }[] =
-    pkg.scoring.strategy === 'letter-pairs' && result.percentages
-      ? pkg.scoring.pairs!.flatMap(([a, b]) => [
-          { label: a, pct: (result.percentages![a] ?? 50) / 100 },
-          { label: b, pct: (result.percentages![b] ?? 50) / 100 },
-        ])
-      : pkg.scoring.strategy === 'dimensions' && result.percentages
-        ? (pkg.scoring.dimensions ?? []).map((dim) => ({
-            label: dim.name,
-            pct: (result.percentages![dim.id] ?? 0) / 100,
-          }))
-        : Object.entries(result.scores).map(([k, v]) => ({ label: k, pct: 0 }))
-
-  for (const bar of bars) {
-    if (y > H - 190) break
-
+  // thresholds 量表：直接展示总分，避免画出全 0 的假条形图
+  if (pkg.scoring.strategy === 'thresholds') {
+    const total = result.scores[pkg.scoring.key ?? 'total'] ?? 0
+    y += 30
     ctx.fillStyle = '#7a8194'
-    ctx.font = '500 18px "PingFang SC", "Microsoft YaHei", sans-serif'
-    ctx.textAlign = 'left'
-    ctx.fillText(bar.label, barX, y)
+    ctx.font = '500 20px "PingFang SC", "Microsoft YaHei", sans-serif'
+    ctx.fillText('总分', barX, y)
     ctx.textAlign = 'right'
-    ctx.fillText(`${Math.round(bar.pct * 100)}%`, barX + barW, y)
+    ctx.fillStyle = '#2f6f4f'
+    ctx.font = '900 56px "PingFang SC", "Microsoft YaHei", sans-serif'
+    ctx.fillText(String(total), barX + barW, y + 14)
+    y += 60
+    ctx.textAlign = 'left'
+  } else {
+    // 维度条：letter-pairs 用百分比对，dimensions/quadrant 用维度百分比
+    const bars: { label: string; pct: number }[] =
+      pkg.scoring.strategy === 'letter-pairs' && result.percentages
+        ? pkg.scoring.pairs!.flatMap(([a, b]) => [
+            { label: a, pct: (result.percentages![a] ?? 50) / 100 },
+            { label: b, pct: (result.percentages![b] ?? 50) / 100 },
+          ])
+        : (result.percentages
+          ? (pkg.scoring.strategy === 'quadrant'
+              ? (pkg.scoring.quadrant?.dimensions ?? [])
+              : (pkg.scoring.dimensions ?? [])
+            ).map((dim) => ({
+              label: dim.name,
+              pct: (result.percentages![dim.id] ?? 0) / 100,
+            }))
+          : [])
 
-    // 轨道 + 填充
-    ctx.fillStyle = '#eceefc'
-    roundRect(ctx, barX, y + 10, barW, 14, 7)
-    ctx.fill()
-    if (bar.pct > 0) {
-      ctx.fillStyle = '#5b6ff0'
-      roundRect(ctx, barX, y + 10, Math.max(14, barW * bar.pct), 14, 7)
+    for (const bar of bars) {
+      if (y > H - 320) break
+
+      ctx.fillStyle = '#7a8194'
+      ctx.font = '500 18px "PingFang SC", "Microsoft YaHei", sans-serif'
+      ctx.textAlign = 'left'
+      ctx.fillText(bar.label, barX, y)
+      ctx.textAlign = 'right'
+      ctx.fillText(`${Math.round(bar.pct * 100)}%`, barX + barW, y)
+
+      // 轨道 + 填充
+      ctx.fillStyle = '#eaf3ed'
+      roundRect(ctx, barX, y + 10, barW, 14, 7)
       ctx.fill()
+      if (bar.pct > 0) {
+        ctx.fillStyle = '#2f6f4f'
+        roundRect(ctx, barX, y + 10, Math.max(14, barW * bar.pct), 14, 7)
+        ctx.fill()
+      }
+      y += 52
     }
-    y += 52
   }
 
-  // 底部信息
-  ctx.textAlign = 'center'
+  // 底部左侧：站名 + 日期 + 免责
+  ctx.textAlign = 'left'
+  const bottomY = H - 108
+  ctx.fillStyle = '#1f2430'
+  ctx.font = '700 24px "PingFang SC", "Microsoft YaHei", sans-serif'
+  ctx.fillText(BRAND, barX, bottomY)
   ctx.fillStyle = '#b0b6c6'
-  ctx.font = '400 16px "PingFang SC", "Microsoft YaHei", sans-serif'
+  ctx.font = '400 15px "PingFang SC", "Microsoft YaHei", sans-serif'
   const date = new Date(result.answeredAt).toLocaleDateString('zh-CN')
-  ctx.fillText(`${date} · ${location.host}`, W / 2, H - 76)
-  ctx.fillText('仅供自我探索参考，不构成医学诊断', W / 2, H - 52)
+  ctx.fillText(`${date} · ${location.host}`, barX, bottomY + 26)
+  ctx.fillText('仅供自我探索参考，不构成医学诊断', barX, bottomY + 48)
 
-  return canvas.toDataURL('image/png')
+  // 底部右侧：二维码（指向该量表详情页，便于追溯来源）
+  const qrSize = 128
+  const qrX = W - 36 - qrSize - 28
+  const qrY = bottomY - 56
+  ctx.fillStyle = '#f6f7f9'
+  roundRect(ctx, qrX - 10, qrY - 10, qrSize + 20, qrSize + 20, 10)
+  ctx.fill()
+  try {
+    const qrCanvas = document.createElement('canvas')
+    await QRCode.toCanvas(qrCanvas, `${location.origin}/about/${result.surveyId}`, {
+      width: qrSize,
+      margin: 0,
+      color: { dark: '#1f2430', light: '#ffffff' },
+    })
+    ctx.drawImage(qrCanvas, qrX, qrY)
+  } catch {
+    // 二维码生成失败时留白，不阻塞分享
+  }
+
+  return canvas
 }
 
-/** 触发下载分享图 */
-export function downloadShareCard(pkg: SurveyPackage, result: SurveyResult): void {
+export type ShareOutcome = 'shared' | 'downloaded' | 'cancelled'
+
+/**
+ * 分享结果图：优先调起系统分享面板（微信/QQ/微博走系统分享），
+ * 不支持（如桌面浏览器）时兜底下载 PNG。
+ */
+export async function shareResultCard(
+  pkg: SurveyPackage,
+  result: SurveyResult,
+): Promise<ShareOutcome> {
+  const canvas = await drawShareCard(pkg, result)
+  const blob = await new Promise<Blob | null>((res) =>
+    canvas.toBlob(res, 'image/png'),
+  )
+  if (!blob) return 'cancelled'
+
+  const filename = `${result.surveyId}-${result.resultId}.png`
+  const file = new File([blob], filename, { type: 'image/png' })
+
+  // 系统分享面板（移动端可用，可直接分享图片到微信/QQ/微博）
+  if (navigator.canShare?.({ files: [file] })) {
+    try {
+      await navigator.share({
+        files: [file],
+        title: pkg.manifest.name,
+        text: `我在「${pkg.manifest.name}」的结果是：${result.resultId}`,
+      })
+      return 'shared'
+    } catch (e) {
+      // 用户取消分享面板不算错误
+      if (e instanceof DOMException && e.name === 'AbortError') return 'cancelled'
+    }
+  }
+
+  // 兜底：下载 PNG
+  const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
-  a.href = drawShareCard(pkg, result)
-  a.download = `${result.surveyId}-${result.resultId}.png`
+  a.href = url
+  a.download = filename
   a.click()
+  URL.revokeObjectURL(url)
+  return 'downloaded'
 }

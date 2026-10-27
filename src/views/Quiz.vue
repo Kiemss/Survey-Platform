@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { computeResult, getSurveyPackage, scaleOptions } from '../engine/loader'
 import { analytics } from '../engine/analytics'
 import { settings } from '../engine/settings'
+import { setMeta } from '../engine/meta'
 import type { SurveyResult } from '../engine/types'
 
 const route = useRoute()
@@ -11,6 +12,7 @@ const router = useRouter()
 const surveyId = route.params.id as string
 
 const pkg = getSurveyPackage(surveyId)
+setMeta(`${pkg.manifest.name} · 答题`)
 const questions = pkg.questions
 
 // 恢复未完成的作答（同一次未提交的进度）

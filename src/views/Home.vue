@@ -4,6 +4,9 @@ import { listSurveyIds, getSurveyPackage } from '../engine/loader'
 import { GROUPS, DEFAULT_TAB, getCategory, getGroup } from '../data/categories'
 import { analytics } from '../engine/analytics'
 import { categoryChipStyle, categoryIcon, categoryTagStyle } from '../data/categoryColors'
+import { setMeta } from '../engine/meta'
+
+setMeta('', '绿帆心理测评：55+ 专业心理量表免费在线测试（MBTI、大五人格、抑郁焦虑自评等），答题即出结果，数据仅存本机。')
 
 interface SurveyCard extends Record<string, unknown> {
   id: string

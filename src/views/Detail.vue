@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getSurveyPackage } from '../engine/loader'
+import { setMeta } from '../engine/meta'
 import { getCategory } from '../data/categories'
 import { categoryChipStyle, categoryIcon, categoryTagStyle } from '../data/categoryColors'
 
@@ -22,6 +23,16 @@ if (!pkg.value) {
 
 const manifest = computed(() => pkg.value?.manifest)
 const qCount = computed(() => pkg.value?.questions.length ?? 0)
+
+// SEO：量表详情页的动态标题与描述
+watchEffect(() => {
+  if (manifest.value) {
+    setMeta(
+      `${manifest.value.name}（${qCount.value}题）`,
+      `${manifest.value.name}在线测试，共 ${qCount.value} 题：${manifest.value.description}`,
+    )
+  }
+})
 const categoryName = computed(() => getCategory(manifest.value?.category).name)
 const chipStyle = computed(() => categoryChipStyle(manifest.value?.category))
 const tagStyle = computed(() => categoryTagStyle(manifest.value?.category))

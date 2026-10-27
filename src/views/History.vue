@@ -3,7 +3,10 @@ import { computed, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { analytics } from '../engine/analytics'
 import { getSurveyPackage } from '../engine/loader'
+import { setMeta } from '../engine/meta'
 import type { SurveyResult } from '../engine/types'
+
+setMeta('我的历史', '查看你在绿帆心理测评的历史测评记录，数据仅保存在本机浏览器。')
 
 const router = useRouter()
 

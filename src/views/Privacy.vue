@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { setMeta } from '../engine/meta'
+
+setMeta('隐私政策', '绿帆心理测评不收集任何个人数据，所有作答与结果仅保存在你的浏览器本地。')
 const lastUpdated = '2026-10'
 </script>
 
