@@ -24,6 +24,8 @@
 - **应急方案生效**：本地 `wrangler login`（OAuth）+ `wrangler deploy` 直连部署成功，线上已更新为最新版本（已验证 bundle 指纹）。
 - 后续策略：代码照常推送 GitHub 存档；部署改由本地 `npx wrangler deploy` 完成。若 Cloudflare Git 集成日后恢复，两条通道互不冲突（同一 Worker）。
 - 备注：wrangler 首次运行需临时 npm 缓存（`$env:npm_config_cache="$env:TEMP\npm-cache"`），因全局缓存目录无写权限。
+- 故障根因（Cloudflare 侧报错佐证）：`Error fetching GitHub User or Organization details`——CF 无法获取 GitHub 账户元数据，账号侧无可修复项，维持本地直连部署。构建令牌已轮换。
+- UI 规范（`d06cb6e`）：首页量表卡片统一为「左下角题量（题库自动统计）/ 右下角开始测试」，版本号与「约 X 分钟」移出卡片（版本 tag 仅家族模板显示在标题旁）。
 
 ### 已完成（`d0ec48c`）
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { listSurveyIds, getSurveyPackage } from '../engine/loader'
-import { CATEGORIES, DEFAULT_CATEGORY, getCategory } from '../data/categories'
+import { CATEGORIES, DEFAULT_TAB, getCategory } from '../data/categories'
 import type { SurveyManifest } from '../engine/types'
 
 const surveys = computed(() =>
@@ -13,7 +13,7 @@ const surveys = computed(() =>
 
 // 分类 Tab：全部 + 各学科；默认定位到主分类
 type Tab = 'all' | string
-const activeTab = ref<Tab>(DEFAULT_CATEGORY)
+const activeTab = ref<Tab>(DEFAULT_TAB)
 
 const tabs = computed(() => [
   { id: 'all' as Tab, name: '全部', icon: '📋', count: surveys.value.length },
