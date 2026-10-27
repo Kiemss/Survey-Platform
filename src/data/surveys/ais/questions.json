@@ -1,0 +1,10 @@
+[
+  { "id": "q1", "type": "single", "text": "关灯后到我入睡所需要的时间（睡眠诱导）", "options": [{ "label": "没有问题或很轻微", "score": { "total": 0 } }, { "label": "轻微延迟", "score": { "total": 2 } }, { "label": "明显延迟", "score": { "total": 4 } }, { "label": "延迟非常严重或没有睡着", "score": { "total": 6 } }] },
+  { "id": "q2", "type": "single", "text": "夜间醒来后我难以再次入睡", "options": [{ "label": "没有问题", "score": { "total": 0 } }, { "label": "轻微问题", "score": { "total": 2 } }, { "label": "明显问题", "score": { "total": 4 } }, { "label": "严重问题或整夜未睡", "score": { "total": 6 } }] },
+  { "id": "q3", "type": "single", "text": "我比期望的时间早醒", "options": [{ "label": "没有早醒", "score": { "total": 0 } }, { "label": "轻微提早", "score": { "total": 2 } }, { "label": "明显提早", "score": { "total": 4 } }, { "label": "严重提早或没有睡眠", "score": { "total": 6 } }] },
+  { "id": "q4", "type": "single", "text": "我的总睡眠时间", "options": [{ "label": "足够", "score": { "total": 0 } }, { "label": "轻微不足", "score": { "total": 2 } }, { "label": "明显不足", "score": { "total": 4 } }, { "label": "严重不足或没有睡眠", "score": { "total": 6 } }] },
+  { "id": "q5", "type": "single", "text": "我对总睡眠质量的评价（无论睡眠时间长短）", "options": [{ "label": "满意（没有不满）", "score": { "total": 0 } }, { "label": "轻微不满", "score": { "total": 2 } }, { "label": "明显不满", "score": { "total": 4 } }, { "label": "非常不满", "score": { "total": 6 } }] },
+  { "id": "q6", "type": "single", "text": "白天我的情绪状态（感到情绪低落）", "options": [{ "label": "正常（没有低落）", "score": { "total": 0 } }, { "label": "轻微低落", "score": { "total": 2 } }, { "label": "明显低落", "score": { "total": 4 } }, { "label": "非常低落", "score": { "total": 6 } }] },
+  { "id": "q7", "type": "single", "text": "白天我的身体功能状态（体力与精神，如记忆力、注意力与专注力）", "options": [{ "label": "正常（没有受限）", "score": { "total": 0 } }, { "label": "轻微受限", "score": { "total": 2 } }, { "label": "明显受限", "score": { "total": 4 } }, { "label": "严重受限", "score": { "total": 6 } }] },
+  { "id": "q8", "type": "single", "text": "白天我会感到困倦、想打瞌睡", "options": [{ "label": "没有思睡", "score": { "total": 0 } }, { "label": "轻微思睡", "score": { "total": 2 } }, { "label": "明显思睡", "score": { "total": 4 } }, { "label": "严重思睡", "score": { "total": 6 } }] }
+]

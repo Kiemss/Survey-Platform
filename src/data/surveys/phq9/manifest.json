@@ -1,0 +1,9 @@
+{
+  "id": "phq9",
+  "name": "抑郁筛查量表（PHQ-9）",
+  "description": "PHQ-9 是国际通用的抑郁症状快速筛查工具（9 题）。请根据最近两周内，下列困扰出现的频率作答。",
+  "estimatedMinutes": 3,
+  "disclaimer": "PHQ-9 由 Pfizer 公开授权免费使用，仅为初步筛查工具；仅供自我探索参考，不构成医学诊断；如结果提示困扰，请寻求精神科医生或心理咨询师的专业帮助。",
+  "version": "1.0.0",
+  "category": "depression"
+}

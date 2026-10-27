@@ -1,0 +1,9 @@
+[
+  { "id": "q1", "type": "single", "text": "感觉紧张、焦虑或急切", "options": [{ "label": "完全不会", "score": { "total": 0 } }, { "label": "好几天", "score": { "total": 1 } }, { "label": "一半以上的天数", "score": { "total": 2 } }, { "label": "几乎每天", "score": { "total": 3 } }] },
+  { "id": "q2", "type": "single", "text": "不能停止或控制担忧", "options": [{ "label": "完全不会", "score": { "total": 0 } }, { "label": "好几天", "score": { "total": 1 } }, { "label": "一半以上的天数", "score": { "total": 2 } }, { "label": "几乎每天", "score": { "total": 3 } }] },
+  { "id": "q3", "type": "single", "text": "对各种各样的事情担忧过多", "options": [{ "label": "完全不会", "score": { "total": 0 } }, { "label": "好几天", "score": { "total": 1 } }, { "label": "一半以上的天数", "score": { "total": 2 } }, { "label": "几乎每天", "score": { "total": 3 } }] },
+  { "id": "q4", "type": "single", "text": "很难放松下来", "options": [{ "label": "完全不会", "score": { "total": 0 } }, { "label": "好几天", "score": { "total": 1 } }, { "label": "一半以上的天数", "score": { "total": 2 } }, { "label": "几乎每天", "score": { "total": 3 } }] },
+  { "id": "q5", "type": "single", "text": "由于不安而无法安静地坐着", "options": [{ "label": "完全不会", "score": { "total": 0 } }, { "label": "好几天", "score": { "total": 1 } }, { "label": "一半以上的天数", "score": { "total": 2 } }, { "label": "几乎每天", "score": { "total": 3 } }] },
+  { "id": "q6", "type": "single", "text": "变得容易烦恼或急躁", "options": [{ "label": "完全不会", "score": { "total": 0 } }, { "label": "好几天", "score": { "total": 1 } }, { "label": "一半以上的天数", "score": { "total": 2 } }, { "label": "几乎每天", "score": { "total": 3 } }] },
+  { "id": "q7", "type": "single", "text": "感到似乎将有可怕的事情发生而害怕", "options": [{ "label": "完全不会", "score": { "total": 0 } }, { "label": "好几天", "score": { "total": 1 } }, { "label": "一半以上的天数", "score": { "total": 2 } }, { "label": "几乎每天", "score": { "total": 3 } }] }
+]

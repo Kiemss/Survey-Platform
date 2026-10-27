@@ -1,0 +1,9 @@
+{
+  "id": "asrs",
+  "name": "成人ADHD自评量表（ASRS v1.1）",
+  "description": "ASRS v1.1 是 WHO 公布的成人注意缺陷多动（ADHD）筛查工具（Part A 6 题）。请根据最近六个月内的情况作答。",
+  "estimatedMinutes": 2,
+  "disclaimer": "本量表为 WHO 公开筛查工具 ASRS v1.1 的 Part A 六题，官方判定方式为逐题筛查，此处简化为总分分级，仅作初步筛查而非诊断；仅供自我探索参考，不构成医学诊断；如结果提示困扰，请寻求精神科医生或心理咨询师的专业帮助。",
+  "version": "1.0.0",
+  "category": "adhd"
+}

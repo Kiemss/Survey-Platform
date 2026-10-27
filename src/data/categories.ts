@@ -71,6 +71,10 @@ export const CATEGORIES: SurveyCategory[] = [
   { id: 'social', name: '社交与恐惧', group: 'mental' },
   { id: 'addiction', name: '成瘾', group: 'mental' },
   { id: 'eating', name: '饮食失调', group: 'mental' },
+  { id: 'adhd', name: '注意力与多动', group: 'mental' },
+  { id: 'autism', name: '自闭谱系', group: 'mental' },
+  { id: 'sleep', name: '睡眠', group: 'mental' },
+  { id: 'stress', name: '压力', group: 'mental' },
   { id: 'aggression', name: '攻击性', group: 'mental' },
   { id: 'psychology', name: '综合筛查', group: 'mental' },
   // 学生专区
