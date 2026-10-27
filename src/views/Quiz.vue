@@ -1,9 +1,9 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { computed, onUnmounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { computeResult, getSurveyPackage, scaleOptions } from '../engine/loader'
 import { analytics } from '../engine/analytics'
-import { loadSettings, saveSettings, DELAY_PRESETS } from '../engine/settings'
+import { loadSettings, saveSettings } from '../engine/settings'
 import type { SurveyResult } from '../engine/types'
 
 const route = useRoute()
@@ -40,8 +40,10 @@ function toggleAutoNext() {
 }
 
 function setDelay(v: number) {
-  autoNextDelay.value = v
-  saveSettings({ autoNextDelay: v })
+  // 钳制在 100–2000ms，防止 0（无反馈）或离谱值
+  const clamped = Math.min(2000, Math.max(100, Math.round(v || 0)))
+  autoNextDelay.value = clamped
+  saveSettings({ autoNextDelay: clamped })
 }
 
 function onDocClick(e: MouseEvent) {
@@ -108,16 +110,17 @@ async function submit() {
             <span class="switch" :class="{ on: autoNext }" />
           </label>
           <div class="setting-row col">
-            <span>跳转速度</span>
-            <select
+            <span>跳转速度（毫秒）</span>
+            <input
+              class="delay-input"
+              type="number"
+              min="100"
+              max="2000"
+              step="50"
               :value="autoNextDelay"
               :disabled="!autoNext"
-              @change="setDelay(Number(($event.target as HTMLSelectElement).value))"
-            >
-              <option v-for="p in DELAY_PRESETS" :key="p.value" :value="p.value">
-                {{ p.label }}
-              </option>
-            </select>
+              @change="setDelay(Number(($event.target as HTMLInputElement).value))"
+            />
           </div>
         </div>
       </div>
@@ -219,7 +222,7 @@ async function submit() {
   position: absolute;
   right: 0;
   top: calc(100% + 8px);
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 10px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
@@ -244,12 +247,12 @@ async function submit() {
   cursor: default;
   gap: 6px;
 }
-.setting-row.col select {
+.setting-row.col .delay-input {
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 6px 8px;
   font-size: 13px;
-  background: #fff;
+  background: var(--card);
   color: var(--text);
 }
 .switch {
@@ -269,7 +272,7 @@ async function submit() {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--card);
   transition: left 0.15s;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
@@ -299,7 +302,7 @@ async function submit() {
 .option {
   text-align: left;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--card);
   border-radius: 8px;
   padding: 12px 16px;
   font-size: 15px;
@@ -327,7 +330,7 @@ async function submit() {
   gap: 12px;
 }
 .btn.ghost {
-  background: #fff;
+  background: var(--card);
   color: var(--text);
   border: 1px solid var(--line);
 }

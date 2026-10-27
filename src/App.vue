@@ -2,6 +2,9 @@
   <div class="app">
     <header class="topbar">
       <RouterLink to="/" class="logo">心理测评站</RouterLink>
+      <button class="theme-btn" :title="themeTitle" @click="toggleTheme">
+        {{ isDark ? '🌙' : '☀️' }}
+      </button>
     </header>
     <main class="main">
       <RouterView />
@@ -10,6 +13,44 @@
   </div>
 </template>
 
+<script setup lang="ts">
+import { computed, onMounted, onUnmounted, ref } from 'vue'
+import {
+  applyTheme,
+  effectiveTheme,
+  loadSettings,
+  saveSettings,
+} from './engine/settings'
+
+const media = window.matchMedia('(prefers-color-scheme: dark)')
+
+const isDark = ref(false)
+const themeTitle = computed(() => `主题（当前：${loadSettings().theme}，点击切换）`)
+
+function refresh() {
+  isDark.value = effectiveTheme(loadSettings()) === 'dark'
+}
+
+function toggleTheme() {
+  // auto → 对切另一侧；light/dark → 直接对切（形成 light ⇄ dark 循环）
+  const next = isDark.value ? 'light' : 'dark'
+  saveSettings({ theme: next })
+  applyTheme(loadSettings())
+  refresh()
+}
+
+function onSystemChange() {
+  if (loadSettings().theme === 'auto') refresh()
+}
+
+onMounted(() => {
+  applyTheme(loadSettings())
+  refresh()
+  media.addEventListener('change', onSystemChange)
+})
+onUnmounted(() => media.removeEventListener('change', onSystemChange))
+</script>
+
 <style scoped>
 .app {
   min-height: 100vh;
@@ -17,14 +58,26 @@
   flex-direction: column;
 }
 .topbar {
-  padding: 16px 24px;
+  padding: 12px 24px;
   border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .logo {
   font-weight: 700;
   font-size: 18px;
   color: var(--text);
   text-decoration: none;
+}
+.theme-btn {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  border-radius: 6px;
 }
 .main {
   flex: 1;

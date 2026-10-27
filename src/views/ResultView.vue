@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { getSurveyPackage } from '../engine/loader'
@@ -153,7 +153,7 @@ const pairs = computed(() => {
   gap: 12px;
 }
 .btn.ghost {
-  background: #fff;
+  background: var(--card);
   color: var(--text);
   border: 1px solid var(--line);
   text-decoration: none;

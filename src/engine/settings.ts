@@ -7,6 +7,8 @@ export interface AppSettings {
   autoNext: boolean
   /** 自动跳转延迟（毫秒），给选中态留视觉反馈 */
   autoNextDelay: number
+  /** 深色模式：跟随系统 / 浅色 / 深色 */
+  theme: 'auto' | 'light' | 'dark'
 }
 
 const STORAGE_KEY = 'survey-settings'
@@ -14,15 +16,8 @@ const STORAGE_KEY = 'survey-settings'
 const DEFAULTS: AppSettings = {
   autoNext: true,
   autoNextDelay: 250,
+  theme: 'auto',
 }
-
-/** 速度预设（下拉可选项） */
-export const DELAY_PRESETS: { label: string; value: number }[] = [
-  { label: '立即（150ms）', value: 150 },
-  { label: '快速（250ms）', value: 250 },
-  { label: '舒适（400ms）', value: 400 },
-  { label: '悠闲（600ms）', value: 600 },
-]
 
 export function loadSettings(): AppSettings {
   try {
@@ -37,4 +32,17 @@ export function saveSettings(patch: Partial<AppSettings>): AppSettings {
   const merged = { ...loadSettings(), ...patch }
   localStorage.setItem(STORAGE_KEY, JSON.stringify(merged))
   return merged
+}
+
+/** auto 模式下跟随系统偏好 */
+export function effectiveTheme(s: AppSettings): 'light' | 'dark' {
+  if (s.theme === 'auto') {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  }
+  return s.theme
+}
+
+/** 把当前主题应用到 <html> 根元素（style.css 用 :root.dark 变量） */
+export function applyTheme(s: AppSettings): void {
+  document.documentElement.classList.toggle('dark', effectiveTheme(s) === 'dark')
 }
