@@ -63,7 +63,6 @@ const currentCategory = computed(() =>
       <div v-for="s in visible" :key="s.id" class="card survey-card">
         <div class="head">
           <h2>{{ s.name }}</h2>
-          <span v-if="s.variant" class="variant">{{ s.variant }}</span>
         </div>
         <p class="desc">{{ s.description }}</p>
         <div class="foot">
@@ -124,13 +123,6 @@ const currentCategory = computed(() =>
   margin: 0;
   font-size: 18px;
 }
-.variant {
-  color: var(--muted);
-  font-size: 12px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 3px 8px;
-}
 .desc {
   color: var(--muted);
   font-size: 14px;
@@ -165,9 +157,6 @@ const currentCategory = computed(() =>
   }
   .foot .btn {
     text-align: center;
-  }
-  .variant {
-    align-self: flex-start;
   }
 }
 </style>
