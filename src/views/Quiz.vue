@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
+import { computed, onUnmounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { computeResult, getSurveyPackage, scaleOptions } from '../engine/loader'
 import { analytics } from '../engine/analytics'
+import { loadSettings, saveSettings } from '../engine/settings'
 import type { SurveyResult } from '../engine/types'
 
 const route = useRoute()
@@ -23,20 +24,40 @@ const current = computed(() => questions[index.value])
 const currentAnswer = computed(() => answers[current.value.id])
 const progress = computed(() => Math.round(((index.value + 1) / questions.length) * 100))
 
+// 自动下一题（设置持久化）
+const autoNext = ref(loadSettings().autoNext)
+const AUTO_NEXT_DELAY = 350
+let autoTimer: number | undefined
+
+function toggleAutoNext() {
+  autoNext.value = !autoNext.value
+  saveSettings({ autoNext: autoNext.value })
+}
+
 const submitting = ref(false)
 
 function choose(qid: string, value: number) {
   answers[qid] = value
   localStorage.setItem(DRAFT_KEY, JSON.stringify(answers))
+
+  // 自动下一题：非最后一题时延迟跳转，给选中态留出视觉反馈
+  if (autoNext.value && index.value < questions.length - 1) {
+    window.clearTimeout(autoTimer)
+    autoTimer = window.setTimeout(next, AUTO_NEXT_DELAY)
+  }
 }
 
 function next() {
+  window.clearTimeout(autoTimer)
   if (index.value < questions.length - 1) index.value++
 }
 
 function prev() {
+  window.clearTimeout(autoTimer)
   if (index.value > 0) index.value--
 }
+
+onUnmounted(() => window.clearTimeout(autoTimer))
 
 async function submit() {
   submitting.value = true
@@ -58,7 +79,12 @@ async function submit() {
     <div class="progress-bar">
       <div class="progress" :style="{ width: progress + '%' }" />
     </div>
-    <p class="count">第 {{ index + 1 }} / {{ questions.length }} 题</p>
+    <div class="quiz-bar">
+      <p class="count">第 {{ index + 1 }} / {{ questions.length }} 题</p>
+      <button class="auto-toggle" :class="{ on: autoNext }" @click="toggleAutoNext">
+        {{ autoNext ? '自动下一题：开' : '自动下一题：关' }}
+      </button>
+    </div>
 
     <div class="card question-card">
       <h2 class="q-text">{{ current.text }}</h2>
@@ -127,6 +153,28 @@ async function submit() {
 .count {
   color: var(--muted);
   font-size: 13px;
+}
+.quiz-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 10px 0 4px;
+}
+.auto-toggle {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.auto-toggle.on {
+  background: var(--accent-weak);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 .question-card {
   min-height: 220px;
