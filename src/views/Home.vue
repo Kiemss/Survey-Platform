@@ -5,7 +5,10 @@ import { CATEGORIES, DEFAULT_CATEGORY, getCategory } from '../data/categories'
 import type { SurveyManifest } from '../engine/types'
 
 const surveys = computed(() =>
-  listSurveyIds().map((id) => getSurveyPackage(id).manifest),
+  listSurveyIds().map((id) => {
+    const pkg = getSurveyPackage(id)
+    return { ...pkg.manifest, qCount: pkg.questions.length }
+  }),
 )
 
 // 分类 Tab：全部 + 各学科；默认定位到主分类
@@ -60,12 +63,12 @@ const currentCategory = computed(() =>
       <div v-for="s in visible" :key="s.id" class="card survey-card">
         <div class="head">
           <h2>{{ s.name }}</h2>
-          <span class="meta">v{{ s.version }} · 约 {{ s.estimatedMinutes }} 分钟</span>
+          <span v-if="s.variant" class="variant">{{ s.variant }}</span>
         </div>
         <p class="desc">{{ s.description }}</p>
         <div class="foot">
-          <span v-if="s.variant" class="variant">{{ s.variant }}</span>
-          <RouterLink class="btn" :to="`/survey/${s.id}`">开始测评</RouterLink>
+          <span class="qcount">{{ s.qCount }} 题</span>
+          <RouterLink class="btn" :to="`/survey/${s.id}`">开始测试</RouterLink>
         </div>
       </div>
     </div>
@@ -121,9 +124,12 @@ const currentCategory = computed(() =>
   margin: 0;
   font-size: 18px;
 }
-.meta {
+.variant {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 3px 8px;
 }
 .desc {
   color: var(--muted);
@@ -135,14 +141,10 @@ const currentCategory = computed(() =>
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  flex-wrap: wrap;
 }
-.variant {
+.qcount {
   color: var(--muted);
-  font-size: 12px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 3px 8px;
+  font-size: 13px;
 }
 .empty {
   text-align: center;
