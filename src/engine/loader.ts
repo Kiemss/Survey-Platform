@@ -93,6 +93,7 @@ export function computeResult(
   for (const q of pkg.questions) {
     const answer = answers[q.id]
     if (answer === undefined) continue
+    if (q.unscored) continue // 干扰题/不计分题：仅作答展示，不参与汇总
     if (q.type === 'scale') {
       // 作答值域为 1..scalePoints（与标准量表计分一致）
       const max = (q.scalePoints ?? 5) + 1

@@ -1,0 +1,15 @@
+{
+  "strategy": "quadrant",
+  "quadrant": {
+    "dimensions": [
+      { "id": "masc", "name": "男性化气质", "cutoff": 57 },
+      { "id": "fem", "name": "女性化气质", "cutoff": 57 }
+    ],
+    "map": {
+      "MF": "androgynous",
+      "Mf": "masculine",
+      "mF": "feminine",
+      "mf": "undifferentiated"
+    }
+  }
+}

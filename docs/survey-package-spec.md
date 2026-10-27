@@ -77,11 +77,12 @@ src/data/
   "scaleLabels": ["没有", "少部分", "相当多", "全部"],  // 缺省用通用 5 级文案
   "dimension": "焦虑",                     // 缺省计到 "total"
   "weight": 1,                            // 缺省 1
-  "reverse": false                        // true = 反向计分
+  "reverse": false,                       // true = 反向计分
+  "unscored": false                       // true = 不计分题（干扰题），作答但不参与任何维度汇总
 }
 ```
 
-注意：scale 题作答值域为 **1..scalePoints**（与纸质量表一致，便于直接套用标准截断值）。反向计分自动换算为 `(scalePoints + 1) - 作答值`。
+注意：scale 题作答值域为 **1..scalePoints**（与纸质量表一致，便于直接套用标准截断值）。反向计分自动换算为 `(scalePoints + 1) - 作答值`。`scaleLabels` 数量必须与 `scalePoints` 一致（校验器会检查）。`unscored: true` 用于 BSRI 等含中性干扰题的量表：题目正常作答与展示，但不注册计分键、不参与汇总。
 
 ## scoring.json
 

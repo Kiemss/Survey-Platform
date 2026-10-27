@@ -48,6 +48,8 @@ export interface Question {
   scalePoints?: number
   /** scale 题型自定义刻度文案（从低到高），缺省用通用文案 */
   scaleLabels?: string[]
+  /** 不计分题（如量表干扰题）：正常作答与展示，但不参与任何维度汇总 */
+  unscored?: boolean
 }
 
 /** scoring.json：计分与结果判定规则 */

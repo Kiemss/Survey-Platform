@@ -70,7 +70,11 @@ function validateQuestions(surveyId, questions, scoring) {
       if (!Number.isInteger(points) || points < 2) {
         errors.push(`${at}: scalePoints 必须为 ≥2 的整数`)
       }
-      scoreKeys.add(q.dimension ?? 'total')
+      if (q.scaleLabels && q.scaleLabels.length !== points) {
+        errors.push(`${at}: scaleLabels 数量（${q.scaleLabels.length}）须与 scalePoints（${points}）一致`)
+      }
+      // 不计分题（干扰题）不参与任何维度汇总，不注册计分键
+      if (!q.unscored) scoreKeys.add(q.dimension ?? 'total')
     }
   })
 
