@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import { getSurveyPackage } from '../engine/loader'
 import { analytics } from '../engine/analytics'
 import { downloadShareCard } from '../engine/share'
+import ScoreGauge from '../components/ScoreGauge.vue'
 import type { SurveyResult } from '../engine/types'
 
 const route = useRoute()
@@ -55,6 +56,13 @@ const dimBars = computed(() => {
     pct: result.value!.percentages![d.id] ?? 0,
   }))
 })
+
+// thresholds 策略：分数表盘（色带 + 指针），letter-pairs/dimensions/quadrant 不显示
+const gaugeBands = computed(() =>
+  pkg.scoring.strategy === 'thresholds' ? (pkg.scoring.bands ?? []) : [],
+)
+const showGauge = computed(() => gaugeBands.value.length > 0 && !!result.value)
+const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total'] ?? 0)
 </script>
 
 <template>
@@ -62,9 +70,16 @@ const dimBars = computed(() => {
     <h1>你的测评结果</h1>
 
     <div class="card result-card">
-      <p class="result-id">{{ detail.resultId }}</p>
+      <p class="result-id font-display">{{ detail.resultId }}</p>
       <h2>{{ detail.info.title }}</h2>
       <p v-if="detail.info.subtitle" class="subtitle">{{ detail.info.subtitle }}</p>
+      <ScoreGauge
+        v-if="showGauge"
+        class="result-gauge"
+        :score="totalScore"
+        :bands="gaugeBands"
+        :results="pkg.results"
+      />
       <p class="desc">{{ detail.info.description }}</p>
       <ul v-if="detail.info.suggestions" class="suggestions">
         <li v-for="(s, i) in detail.info.suggestions" :key="i">{{ s }}</li>
@@ -135,6 +150,10 @@ const dimBars = computed(() => {
 }
 .subtitle {
   color: var(--muted);
+}
+.result-gauge {
+  margin: 18px 0 4px;
+  text-align: left;
 }
 .desc {
   line-height: 1.8;

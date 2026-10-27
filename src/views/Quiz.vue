@@ -290,7 +290,7 @@ async function submit() {
   color: var(--muted);
 }
 .sheet-warn {
-  color: #d46a6a;
+  color: var(--danger);
 }
 .sheet-grid {
   display: grid;

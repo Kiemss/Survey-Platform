@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <header class="topbar">
-      <RouterLink to="/" class="logo">心理测评站</RouterLink>
+      <RouterLink to="/" class="logo font-display">心理测评站</RouterLink>
       <nav class="nav">
         <RouterLink to="/history" class="nav-link">历史</RouterLink>
         <div class="settings-wrap" ref="settingsRef">

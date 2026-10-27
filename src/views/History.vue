@@ -145,7 +145,7 @@ h1 {
   text-decoration: none;
 }
 .danger {
-  color: #d9534f;
+  color: var(--danger);
 }
 .empty {
   margin-top: 14px;

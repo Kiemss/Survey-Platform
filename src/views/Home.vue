@@ -2,6 +2,8 @@
 import { computed, ref, watch } from 'vue'
 import { listSurveyIds, getSurveyPackage } from '../engine/loader'
 import { GROUPS, DEFAULT_TAB, getCategory, getGroup } from '../data/categories'
+import { analytics } from '../engine/analytics'
+import { categoryChipStyle, categoryIcon, categoryTagStyle } from '../data/categoryColors'
 
 interface SurveyCard extends Record<string, unknown> {
   id: string
@@ -87,12 +89,23 @@ const currentGroup = computed(() =>
   activeTab.value === 'all' ? null : getGroup(activeTab.value),
 )
 const searching = computed(() => keyword.value.trim().length > 0)
+
+/** 历史记录中出现过的量表 id（用于卡片「✓ 已测」徽标） */
+const testedIds = new Set(analytics.getHistory().map((r) => r.surveyId))
 </script>
 
 <template>
   <div>
+    <section class="hero">
+      <p class="hero-title font-display">心理测评站</p>
+      <p class="hero-slogan">免费 · 专业 · 隐私优先的心理自评平台</p>
+      <div class="hero-badges">
+        <span class="hero-badge">🔒 数据只存你的浏览器</span>
+        <span class="hero-badge">📋 {{ surveys.length }} 个专业量表</span>
+      </div>
+    </section>
+
     <h1>选择一项测评</h1>
-    <p class="hint">全部作答在浏览器本地完成，结果保存在你的设备上，不会上传。</p>
 
     <input
       v-model="keyword"
@@ -131,8 +144,21 @@ const searching = computed(() => keyword.value.trim().length > 0)
         :to="`/about/${s.id}`"
       >
         <div class="head">
-          <h2>{{ s.name }}</h2>
-          <span v-if="searching" class="cat-tag">{{ getCategory(s.category).name }}</span>
+          <span class="title-wrap">
+            <span class="cat-chip" :style="categoryChipStyle(s.category)" aria-hidden="true">{{
+              categoryIcon(s.category)
+            }}</span>
+            <h2>{{ s.name }}</h2>
+          </span>
+          <span class="head-tags">
+            <span v-if="testedIds.has(s.id)" class="tested-badge">✓ 已测</span>
+            <span
+              v-if="searching"
+              class="cat-tag"
+              :style="categoryTagStyle(s.category)"
+              >{{ getCategory(s.category).name }}</span
+            >
+          </span>
         </div>
         <p class="desc">{{ s.description }}</p>
         <div class="foot">
@@ -163,6 +189,41 @@ const searching = computed(() => keyword.value.trim().length > 0)
 </template>
 
 <style scoped>
+/* 首页 hero 横幅：品牌渐变卡，深浅色均以白字呈现 */
+.hero {
+  border-radius: 12px;
+  padding: 28px 20px;
+  background: linear-gradient(135deg, var(--accent) 0%, #8a5cf6 100%);
+  color: #fff;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.hero-title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
+.hero-slogan {
+  margin: 8px 0 14px;
+  font-size: 14px;
+  opacity: 0.92;
+}
+.hero-badges {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hero-badge {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  white-space: nowrap;
+}
 .search {
   width: 100%;
   border: 1px solid var(--line);
@@ -215,27 +276,61 @@ const searching = computed(() => keyword.value.trim().length > 0)
   display: block;
   color: inherit;
   text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.survey-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--shadow);
 }
 .survey-card:hover h2 {
   color: var(--accent);
 }
 .head {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
+}
+.title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.cat-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  font-size: 17px;
+  flex: none;
 }
 .head h2 {
   margin: 0;
   font-size: 18px;
 }
-.cat-tag {
+.head-tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.tested-badge {
   font-size: 12px;
   color: var(--accent);
   background: var(--accent-weak);
   border-radius: 999px;
   padding: 3px 10px;
+  white-space: nowrap;
+}
+.cat-tag {
+  font-size: 12px;
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
 }
 .desc {
   color: var(--muted);
@@ -255,10 +350,6 @@ const searching = computed(() => keyword.value.trim().length > 0)
 .empty {
   text-align: center;
   color: var(--muted);
-}
-.hint {
-  color: var(--muted);
-  font-size: 13px;
 }
 .pager {
   display: flex;
@@ -293,6 +384,17 @@ const searching = computed(() => keyword.value.trim().length > 0)
   color: var(--text);
 }
 @media (max-width: 480px) {
+  .hero {
+    padding: 20px 14px;
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-size: 24px;
+  }
+  .hero-slogan {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
   .cat-tab {
     padding: 8px 12px;
     font-size: 13px;

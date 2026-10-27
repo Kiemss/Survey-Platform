@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getSurveyPackage } from '../engine/loader'
 import { getCategory } from '../data/categories'
+import { categoryChipStyle, categoryIcon, categoryTagStyle } from '../data/categoryColors'
 
 const route = useRoute()
 const router = useRouter()
@@ -22,6 +23,8 @@ if (!pkg.value) {
 const manifest = computed(() => pkg.value?.manifest)
 const qCount = computed(() => pkg.value?.questions.length ?? 0)
 const categoryName = computed(() => getCategory(manifest.value?.category).name)
+const chipStyle = computed(() => categoryChipStyle(manifest.value?.category))
+const tagStyle = computed(() => categoryTagStyle(manifest.value?.category))
 </script>
 
 <template>
@@ -29,7 +32,12 @@ const categoryName = computed(() => getCategory(manifest.value?.category).name)
     <RouterLink to="/" class="back">‹ 返回列表</RouterLink>
 
     <div class="card detail">
-      <span class="cat-tag">{{ categoryName }}</span>
+      <div class="cat-row">
+        <span class="cat-chip" :style="chipStyle" aria-hidden="true">{{
+          categoryIcon(manifest?.category)
+        }}</span>
+        <span class="cat-tag" :style="tagStyle">{{ categoryName }}</span>
+      </div>
       <h1>{{ manifest.name }}</h1>
       <p class="meta">{{ qCount }} 题 · 约 {{ manifest.estimatedMinutes }} 分钟</p>
       <p class="desc">{{ manifest.description }}</p>
@@ -64,14 +72,27 @@ const categoryName = computed(() => getCategory(manifest.value?.category).name)
 .detail {
   margin-bottom: 16px;
 }
+.cat-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.cat-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  font-size: 17px;
+  flex: none;
+}
 .cat-tag {
   display: inline-block;
   font-size: 12px;
-  color: var(--accent);
-  background: var(--accent-weak);
   border-radius: 999px;
   padding: 3px 10px;
-  margin-bottom: 8px;
 }
 .detail h1 {
   margin: 0 0 4px;

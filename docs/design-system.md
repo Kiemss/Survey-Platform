@@ -17,20 +17,44 @@
 | `--bg` | 页面背景 | `#f6f7f9` | `#12141a` |
 | `--card` | 卡片/面板背景 | `#ffffff` | `#1c1f28` |
 | `--text` | 正文/标题 | `#1f2430` | `#e8eaf0` |
-| `--muted` | 次要文字、说明 | `#7a8194` | `#8f96a8` |
+| `--muted` | 次要文字、说明 | `#7a8194` | `#9aa2b5` |
 | `--accent` | 品牌主色：按钮、链接、强调 | `#4f6ef7` | `#7b93ff` |
 | `--accent-weak` | 主色的弱背景（选中态、徽章底） | `#eef1fe` | `#262c44` |
-| `--line` | 边框、分隔线、进度条轨道 | `#e5e8ef` | `#2b2f3c` |
+| `--line` | 边框、分隔线、进度条轨道 | `#e5e8ef` | `#353b4b` |
 | `--shadow` | 浮层阴影 | `rgba(0,0,0,.08)` | `rgba(0,0,0,.4)` |
+| `--danger` | 危险/警示文字（答题卡缺答、清空历史） | `#d9534f` | `#e57373` |
 
 **使用规则**：
 
 - 正文中禁止使用 `--accent` 之外的彩色；状态提示（如错误）如需引入新色，先在此表登记
 - 文字对比度：`--text` 用于主内容，`--muted` 只用于辅助信息（说明、meta、免责声明），禁止用 `--muted` 写需要用户必读的内容
 
+### 2.1 扩展色板（登记区）
+
+| 名称 | 值 | 用途 |
+|---|---|---|
+| personality 蓝紫 | `#6366f1` | 人格测评分类图标底色/标签 |
+| mental 蓝绿 | `#14b8a6` | 情绪与健康分类图标底色/标签 |
+| student 橙 | `#f59e0b` | 学生专区分类图标底色/标签 |
+| cognitive 紫 | `#a855f7` | 认知能力分类图标底色/标签 |
+| relationship 粉 | `#ec4899` | 关系与家庭分类图标底色/标签 |
+| fun 玫红 | `#f43f5e` | 趣味测试分类图标底色/标签 |
+| 表盘色带 | `#22c55e → #84cc16 → #eab308 → #f59e0b → #f97316 → #ef4444` | ScoreGauge 分数表盘，按 bands 档数均匀取色（2 档 = 绿/红双色） |
+| Hero 渐变 | `var(--accent) → #8a5cf6`（135deg） | 首页 hero 横幅，白字，深浅色通用 |
+
+- 分类色统一经 `src/data/categoryColors.ts` 取用：子类不单独设色，继承所属大类；图标底色为主色 + `26` 透明度（约 15%），深浅色通用
+- 除上表登记场景外，其余正文区域仍禁止使用彩色
+
 ## 3. 字体与字号
 
-- 字体栈：`'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif`（在 `body` 上声明，组件不重复声明）
+- 字体栈（`body` 上声明，组件不重复声明）：中文优先本地栈 `MiSans → HarmonyOS Sans SC → PingFang SC → Microsoft YaHei UI/微软雅黑 → Noto Sans SC`，数字/字母由排在前面的 `Segoe UI` 混排：
+
+  ```css
+  font-family: 'Segoe UI', 'MiSans', 'HarmonyOS Sans SC', 'PingFang SC',
+    'Microsoft YaHei UI', 'Microsoft YaHei', 'Noto Sans SC', system-ui, sans-serif;
+  ```
+
+- 展示字体：`LXGW WenKai Screen`（霞鹜文楷屏幕版，CDN 引入，见 index.html），**只用于展示性文字**——顶栏站名、首页 hero 站名、结果代号等，通过全局 `.font-display` 类挂载；正文/按钮/表单一律用默认字体栈
 - 字号档位（页面内使用，禁止其他中间值）：
 
 | 档位 | 用途 |
@@ -64,6 +88,7 @@
 | 分享图外卡 | `24px` |
 
 - 阴影只用于**浮层**（设置面板等 `position: absolute` 元素）：`0 8px 24px var(--shadow)`；页面内卡片用边框 `1px solid var(--line)` 区分，不加阴影
+- **唯一例外**：首页量表卡片 `.survey-card` hover 态允许上浮 `translateY(-2px)` + `0 8px 20px var(--shadow)`（transition 0.2s），深浅色经 `--shadow` 变量自适应
 
 ## 6. 基础组件规范
 
@@ -92,7 +117,9 @@
 ## 7. 图标与图形
 
 - 图标统一用 **emoji**（⚙ ☀️ 🌙 以及分类 Tab 的 🧩🧠🎉），不引入图标库
+- 分类图标底座 `.cat-chip`：34×34px、圆角 9px、底色为分类色 + 15% 透明度（见 §2.1），用于量表卡片左上角与详情页
 - 维度条形图：轨道 `--line` 高 `10px` 全圆角，填充 `--accent`；领先一侧文字 `--accent` 加粗
+- **ScoreGauge 分数表盘**（`src/components/ScoreGauge.vue`）：仅 thresholds 策略量表显示，插入结果卡「代号/标题」与解读文字之间。水平色带（绿→黄→橙→红，档数适配）+ 等比刻度线 + 带数值指针气泡；桌面端色带下方标注每档名称，≤480px 隐藏档名行、改显「当前档」行。纯 CSS 实现，不引第三方图表库
 - 分享图（canvas）独立规范：固定浅色（渐变 `#5b6ff0 → #8a5cf6`）、2x 导出、底部标注日期 + 域名 + 免责声明
 
 ## 8. 页面骨架约定

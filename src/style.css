@@ -7,6 +7,7 @@
   --accent-weak: #eef1fe;
   --line: #e5e8ef;
   --shadow: rgba(0, 0, 0, 0.08);
+  --danger: #d9534f;
 }
 
 /* 深色模式变量（html 根元素加 .dark 类时生效） */
@@ -14,11 +15,13 @@
   --bg: #12141a;
   --card: #1c1f28;
   --text: #e8eaf0;
-  --muted: #8f96a8;
+  /* 深色下次级文字与边框对比度提升 */
+  --muted: #9aa2b5;
   --accent: #7b93ff;
   --accent-weak: #262c44;
-  --line: #2b2f3c;
+  --line: #353b4b;
   --shadow: rgba(0, 0, 0, 0.4);
+  --danger: #e57373;
   color-scheme: dark;
 }
 
@@ -26,16 +29,41 @@
   box-sizing: border-box;
 }
 
+/* 中文用本地字体栈优先，数字/字母由 Segoe UI 混排 */
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  font-family:
+    'Segoe UI',
+    'MiSans',
+    'HarmonyOS Sans SC',
+    'PingFang SC',
+    'Microsoft YaHei UI',
+    'Microsoft YaHei',
+    'Noto Sans SC',
+    system-ui,
+    sans-serif;
   transition: background 0.2s, color 0.2s;
 }
 
 button {
   font-family: inherit;
+}
+
+/* 展示性文字（站名、结果代号等）：霞鹜文楷屏幕版（CDN 备用，见 index.html） */
+.font-display {
+  font-family:
+    'LXGW WenKai Screen',
+    'Segoe UI',
+    'MiSans',
+    'HarmonyOS Sans SC',
+    'PingFang SC',
+    'Microsoft YaHei UI',
+    'Microsoft YaHei',
+    'Noto Sans SC',
+    system-ui,
+    sans-serif;
 }
 
 .card {
