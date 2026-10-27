@@ -3,7 +3,6 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { getSurveyPackage } from '../engine/loader'
 import { analytics } from '../engine/analytics'
-import { downloadShareCard } from '../engine/share'
 import ScoreGauge from '../components/ScoreGauge.vue'
 import type { SurveyResult } from '../engine/types'
 
@@ -46,15 +45,25 @@ const pairs = computed(() => {
   }))
 })
 
-// dimensions 策略：各维度归一化百分比条
+// dimensions / quadrant 策略：各维度归一化百分比条
 const dimBars = computed(() => {
   const cfg = pkg.scoring
-  if (cfg.strategy !== 'dimensions' || !result.value?.percentages) return []
-  return (cfg.dimensions ?? []).map((d) => ({
-    id: d.id,
-    name: d.name,
-    pct: result.value!.percentages![d.id] ?? 0,
-  }))
+  if (!result.value?.percentages) return []
+  if (cfg.strategy === 'dimensions') {
+    return (cfg.dimensions ?? []).map((d) => ({
+      id: d.id,
+      name: d.name,
+      pct: result.value!.percentages![d.id] ?? 0,
+    }))
+  }
+  if (cfg.strategy === 'quadrant') {
+    return (cfg.quadrant?.dimensions ?? []).map((d) => ({
+      id: d.id,
+      name: d.name,
+      pct: result.value!.percentages![d.id] ?? 0,
+    }))
+  }
+  return []
 })
 
 // thresholds 策略：分数表盘（色带 + 指针），letter-pairs/dimensions/quadrant 不显示
@@ -114,7 +123,7 @@ const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total
     </div>
 
     <!-- thresholds 量表：原始分 -->
-    <div v-else class="card">
+    <div v-else-if="pkg.scoring.strategy === 'thresholds'" class="card">
       <h3>得分详情</h3>
       <p class="score">
         总分：<strong>{{ detail.scores.total ?? 0 }}</strong>
@@ -124,7 +133,6 @@ const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total
     <p v-if="pkg.manifest.disclaimer" class="disclaimer">{{ pkg.manifest.disclaimer }}</p>
 
     <div class="actions">
-      <button class="btn" @click="downloadShareCard(pkg, result!)">保存分享图</button>
       <RouterLink class="btn ghost" :to="`/survey/${surveyId}`">再测一次</RouterLink>
       <RouterLink class="btn ghost" to="/">返回首页</RouterLink>
     </div>
