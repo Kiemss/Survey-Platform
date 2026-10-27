@@ -44,6 +44,13 @@
 3. **大五家族扩容（bigfive 家族）**：IPIP-NEO 120 题（25 分钟）与 300 题（60 分钟）上线，题目与反向计分键来自 IPIP 官网（30FacetNEO-PI-RItems.htm / newNEOFacetsKey.htm，经官方 300-120 对照表交叉验证），三版本（50/120/300）共享 families/bigfive/results.json 文案。校验通过（5 量表 / 2 家族）。
 4. 部署验证：`032554c` 推送后 CF 自动构建成功（线上指纹 index-C-xJBf3B），Git 集成通道确认恢复。
 
+### 已完成（v0.3 第五批：首页交互改版）
+
+1. **两级分类撤销**（用户决策）：回到一级平铺 Tab（全部 + 各分类），categories.ts 保留 group 字段供日后恢复。
+2. **翻页跳转改为确认式**：页码输入 + 「跳转」按钮（或回车）才切换，替代原先的 change 即跳。
+3. **量表详情页**（/about/:id，新增 Detail.vue）：首页卡片整体点击进详情（简介/题数/时长/测评须知/开始按钮）；「开始测试」按钮仍直达答题（click.stop 防冒泡）。借鉴自竞品 moodaxis 的信任前置模式。
+4. 竞品走查完成（pixues/moodaxis/anxietyaidtools/psychologytest.net），可借鉴清单：答题卡导航、结果页推荐量表、卡片时长/热度。
+
 ### 待办（v0.3 剩余）
 
 1. 趣味测试首秀：1-2 个搞笑测试（fun 分类）
