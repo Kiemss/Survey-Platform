@@ -1,5 +1,5 @@
 ﻿﻿﻿﻿<script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { getSurveyPackage } from '../engine/loader'
 import { analytics } from '../engine/analytics'
