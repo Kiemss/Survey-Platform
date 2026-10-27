@@ -27,7 +27,7 @@
 
 ### 待办（v0.3 剩余）
 
-1. 题库格式校验脚本（上架前自检 manifest/questions/scoring/results 一致性）
+1. ~~题库格式校验脚本~~ ✅（`cc2494c`）：[validate-surveys.mjs](scripts/validate-surveys.mjs)，20 余条规则（manifest 一致性、题目 id 重复、single/scale 计分键与策略对齐、letter-pairs 2^n 组合文案覆盖、thresholds 区间连续、家族/分类引用存在性），中文报错；已挂 `prebuild`——本地 `npm run build` 和 Cloudflare 部署前都会自动校验。正向 + 反向（坏 id、缺结果文案）实测均正确拦截。
 2. 大五人格 BFI-44（psychology 分类）
 3. 趣味测试首秀：1-2 个搞笑测试（fun 分类，single 题型 + 自定义 resultId）
 
