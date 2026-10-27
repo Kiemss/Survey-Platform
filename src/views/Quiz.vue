@@ -23,6 +23,8 @@ const index = ref(0)
 const current = computed(() => questions[index.value])
 const currentAnswer = computed(() => answers[current.value.id])
 const progress = computed(() => Math.round(((index.value + 1) / questions.length) * 100))
+const answeredCount = computed(() => questions.filter((q) => answers[q.id] !== undefined).length)
+const allAnswered = computed(() => answeredCount.value === questions.length)
 
 // 自动跳转计时器（设置项来自全局 store，见顶栏 ⚙）
 let autoTimer: number | undefined
@@ -32,6 +34,18 @@ const submitting = ref(false)
 function choose(qid: string, value: number) {
   answers[qid] = value
   localStorage.setItem(DRAFT_KEY, JSON.stringify(answers))
+
+  // 自动提交：最后一题答完且全部作答完毕（开启设置时）
+  if (
+    settings.autoSubmit &&
+    settings.autoNext &&
+    index.value === questions.length - 1 &&
+    allAnswered.value
+  ) {
+    window.clearTimeout(autoTimer)
+    autoTimer = window.setTimeout(submit, settings.autoNextDelay + 150)
+    return
+  }
 
   // 自动下一题：非最后一题时延迟跳转，给选中态留出视觉反馈
   if (settings.autoNext && index.value < questions.length - 1) {
@@ -52,7 +66,20 @@ function prev() {
 
 onUnmounted(() => window.clearTimeout(autoTimer))
 
+/** 提交前审查：存在未答题时弹窗提示，可选择跳到第一道未答题 */
 async function submit() {
+  const missing = questions.length - answeredCount.value
+  if (missing > 0) {
+    const firstUnanswered = questions.findIndex((q) => answers[q.id] === undefined)
+    const goFix = window.confirm(
+      `还有 ${missing} 道题未作答，提交可能影响结果准确性。\n\n点击「确定」前往第 ${firstUnanswered + 1} 题补答；点击「取消」留在本页。`,
+    )
+    if (goFix) {
+      index.value = firstUnanswered
+      return
+    }
+  }
+
   submitting.value = true
   try {
     const result: SurveyResult = computeResult(pkg, answers)

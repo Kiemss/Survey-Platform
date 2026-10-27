@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { listSurveyIds, getSurveyPackage } from '../engine/loader'
-import { CATEGORIES, DEFAULT_TAB, getCategory } from '../data/categories'
+import { GROUPS, DEFAULT_TAB, getCategory } from '../data/categories'
 
 interface SurveyCard extends Record<string, unknown> {
   id: string
@@ -26,7 +26,7 @@ const surveys = computed<SurveyCard[]>(() =>
   }),
 )
 
-// 一级分类 Tab：全部 + 各分类
+// 一级综合大类 Tab：全部 + 6 个大类（分类明细只用于归类，不外显）
 type Tab = 'all' | string
 const activeTab = ref<Tab>(DEFAULT_TAB)
 
@@ -35,11 +35,11 @@ const keyword = ref('')
 
 const tabs = computed(() => [
   { id: 'all' as Tab, name: '全部', icon: '📋', count: surveys.value.length },
-  ...CATEGORIES.map((c) => ({
-    id: c.id as Tab,
-    name: c.name,
-    icon: c.icon,
-    count: surveys.value.filter((s) => getCategory(s.category).id === c.id).length,
+  ...GROUPS.map((g) => ({
+    id: g.id as Tab,
+    name: g.name,
+    icon: g.icon,
+    count: surveys.value.filter((s) => getCategory(s.category).group === g.id).length,
   })),
 ])
 
@@ -57,7 +57,7 @@ const filtered = computed<SurveyCard[]>(() => {
   const kw = keyword.value.trim().toLowerCase()
   if (kw) return surveys.value.filter((s) => matchSearch(s, kw))
   if (activeTab.value === 'all') return surveys.value
-  return surveys.value.filter((s) => getCategory(s.category).id === activeTab.value)
+  return surveys.value.filter((s) => getCategory(s.category).group === activeTab.value)
 })
 
 // 分页
@@ -83,8 +83,8 @@ function confirmJump() {
   pageInput.value = ''
 }
 
-const currentCategory = computed(() =>
-  activeTab.value === 'all' ? null : getCategory(activeTab.value),
+const currentGroup = computed(() =>
+  activeTab.value === 'all' ? null : getGroup(activeTab.value),
 )
 const searching = computed(() => keyword.value.trim().length > 0)
 </script>
@@ -121,7 +121,7 @@ const searching = computed(() => keyword.value.trim().length > 0)
     <p v-if="searching" class="cat-intro">
       搜索「{{ keyword.trim() }}」：找到 {{ filtered.length }} 个结果
     </p>
-    <p v-else-if="currentCategory" class="cat-intro">{{ currentCategory.intro }}</p>
+    <p v-else-if="currentGroup" class="cat-intro">{{ currentGroup.intro }}</p>
 
     <div v-if="visible.length" class="survey-list">
       <RouterLink

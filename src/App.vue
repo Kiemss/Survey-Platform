@@ -18,6 +18,15 @@
               />
             </div>
             <div class="setting-row">
+              <span>自动提交</span>
+              <button
+                class="switch"
+                :class="{ on: settings.autoSubmit }"
+                aria-label="答完自动提交"
+                @click="settings.autoSubmit = !settings.autoSubmit"
+              />
+            </div>
+            <div class="setting-row">
               <span>跳转速度（毫秒）</span>
               <input
                 class="delay-input"

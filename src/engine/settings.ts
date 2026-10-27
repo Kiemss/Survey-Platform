@@ -10,6 +10,8 @@ export interface AppSettings {
   autoNext: boolean
   /** 自动跳转延迟（毫秒），给选中态留视觉反馈 */
   autoNextDelay: number
+  /** 最后一题答完且全部作答完毕后自动提交 */
+  autoSubmit: boolean
   /** 深色模式：跟随系统 / 浅色 / 深色 */
   theme: 'auto' | 'light' | 'dark'
 }
@@ -19,6 +21,7 @@ const STORAGE_KEY = 'survey-settings'
 const DEFAULTS: AppSettings = {
   autoNext: true,
   autoNextDelay: 250,
+  autoSubmit: true,
   theme: 'auto',
 }
 
