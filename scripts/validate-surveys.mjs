@@ -138,6 +138,27 @@ function validateScoring(surveyId, scoring, resultsKeys) {
     return new Set([key])
   }
 
+  if (scoring.strategy === 'dimensions') {
+    const dims = scoring.dimensions ?? []
+    if (!Array.isArray(dims) || dims.length === 0) {
+      errors.push(`${surveyId}/scoring.json: dimensions 策略缺少 dimensions 数组`)
+      return new Set()
+    }
+    const keys = new Set()
+    for (const dim of dims) {
+      if (!dim.id || !dim.name) {
+        errors.push(`${surveyId}/scoring.json: dimensions 每项必须包含 id 与 name`)
+      }
+      keys.add(dim.id)
+      if (!resultsKeys.has(dim.id)) {
+        errors.push(
+          `${surveyId}: dimensions 策略的结果 id 取最高维度，缺少维度 "${dim.id}" 的结果文案`,
+        )
+      }
+    }
+    return keys
+  }
+
   errors.push(`${surveyId}/scoring.json: 未知 strategy "${scoring.strategy}"`)
   return new Set()
 }
@@ -198,7 +219,7 @@ function validateSurvey(dirName, categoryIds, familyResultKeys) {
   for (const k of scoreKeys) {
     if (!scoringKeys.has(k)) {
       errors.push(
-        `${dirName}: 题目计分键 "${k}" 未被 scoring.json 的策略使用（${scoring.strategy === 'letter-pairs' ? 'pairs' : `key: ${scoring.key ?? 'total'}`}），可能是维度名拼写错误`,
+        `${dirName}: 题目计分键 "${k}" 未被 scoring.json 的策略使用（${scoring.strategy === 'letter-pairs' ? 'pairs' : scoring.strategy === 'dimensions' ? 'dimensions' : `key: ${scoring.key ?? 'total'}`}），可能是维度名拼写错误`,
       )
     }
   }

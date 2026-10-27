@@ -52,7 +52,7 @@ export interface Question {
 
 /** scoring.json：计分与结果判定规则 */
 export interface ScoringConfig {
-  strategy: 'letter-pairs' | 'thresholds'
+  strategy: 'letter-pairs' | 'thresholds' | 'dimensions'
   /**
    * letter-pairs：维度配对，如 [["E","I"],["S","N"]]。
    * 每对取得分高者为结果字母，按顺序拼接成结果 id（如 "INTJ"）
@@ -64,6 +64,12 @@ export interface ScoringConfig {
    */
   key?: string
   bands?: { min: number; max: number; resultId: string }[]
+  /**
+   * dimensions：多维度剖面（如大五人格）。
+   * 每个维度归一化为百分比，结果 id 取得分最高的维度键；
+   * 结果文案需覆盖全部维度 id
+   */
+  dimensions?: { id: string; name: string }[]
 }
 
 /** results.json：结果条目。key 为 resultId */

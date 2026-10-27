@@ -44,6 +44,17 @@ const pairs = computed(() => {
     pb: result.value!.percentages![b] ?? 50,
   }))
 })
+
+// dimensions 策略：各维度归一化百分比条
+const dimBars = computed(() => {
+  const cfg = pkg.scoring
+  if (cfg.strategy !== 'dimensions' || !result.value?.percentages) return []
+  return (cfg.dimensions ?? []).map((d) => ({
+    id: d.id,
+    name: d.name,
+    pct: result.value!.percentages![d.id] ?? 0,
+  }))
+})
 </script>
 
 <template>
@@ -70,6 +81,19 @@ const pairs = computed(() => {
         </div>
         <div class="dim-bar">
           <div class="dim-left" :style="{ width: p.pa + '%' }" />
+        </div>
+      </div>
+    </div>
+
+    <!-- dimensions 量表：多维度剖面图 -->
+    <div v-else-if="dimBars.length" class="card">
+      <h3>维度剖面</h3>
+      <div v-for="d in dimBars" :key="d.id" class="dim">
+        <div class="dim-labels">
+          <span :class="{ strong: d.pct >= 50 }">{{ d.name }} {{ d.pct }}%</span>
+        </div>
+        <div class="dim-bar">
+          <div class="dim-left" :style="{ width: d.pct + '%' }" />
         </div>
       </div>
     </div>

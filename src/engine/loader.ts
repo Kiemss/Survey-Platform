@@ -121,6 +121,22 @@ export function computeResult(
       letters.push(sa >= sb ? a : b)
     }
     resultId = letters.join('')
+  } else if (cfg.strategy === 'dimensions') {
+    // 多维度剖面：按各维度理论满分归一化，结果 id 取最高维度
+    percentages = {}
+    let topKey = ''
+    let topPct = -1
+    for (const dim of cfg.dimensions ?? []) {
+      const qCount = pkg.questions.filter((q) => q.dimension === dim.id).length
+      const max = qCount * (pkg.questions.find((q) => q.dimension === dim.id)?.scalePoints ?? 5)
+      const pct = max > 0 ? Math.round(((scores[dim.id] ?? 0) / max) * 100) : 0
+      percentages[dim.id] = pct
+      if (pct > topPct) {
+        topPct = pct
+        topKey = dim.id
+      }
+    }
+    resultId = topKey
   } else {
     const key = cfg.key ?? 'total'
     const total = scores[key] ?? 0

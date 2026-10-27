@@ -12,16 +12,16 @@ export interface SurveyCategory {
 
 export const CATEGORIES: SurveyCategory[] = [
   {
-    id: 'mbti',
-    name: 'MBTI 人格类型',
-    icon: '🎯',
-    intro: '十六型人格（类型学）测评，多种题量模板，结果仅供娱乐与自我探索',
+    id: 'personality',
+    name: '人格测评',
+    icon: '🧩',
+    intro: '类型学与特质向人格测评（MBTI、大五人格等），探索你的行为与思维模式',
   },
   {
     id: 'psychology',
     name: '心理学',
     icon: '🧠',
-    intro: '专业向量表：人格特质、情绪与心理健康筛查',
+    intro: '专业向量表：情绪与心理健康筛查（临床/学术类）',
   },
   {
     id: 'fun',
@@ -35,7 +35,7 @@ export const CATEGORIES: SurveyCategory[] = [
 export const DEFAULT_CATEGORY = 'psychology'
 
 /** 首页默认选中的 Tab */
-export const DEFAULT_TAB = 'mbti'
+export const DEFAULT_TAB = 'personality'
 
 export function getCategory(id?: string): SurveyCategory {
   const found = CATEGORIES.find((c) => c.id === id)

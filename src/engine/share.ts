@@ -101,14 +101,12 @@ export function drawShareCard(pkg: SurveyPackage, result: SurveyResult): string 
           { label: a, pct: (result.percentages![a] ?? 50) / 100 },
           { label: b, pct: (result.percentages![b] ?? 50) / 100 },
         ])
-      : (pkg.scoring.dimensions ?? []).map((dim) => {
-          const raw = result.scores[dim.id] ?? 0
-          const span = (dim.max ?? 1) - (dim.min ?? 0)
-          return {
+      : pkg.scoring.strategy === 'dimensions' && result.percentages
+        ? (pkg.scoring.dimensions ?? []).map((dim) => ({
             label: dim.name,
-            pct: span > 0 ? Math.min(1, Math.max(0, (raw - (dim.min ?? 0)) / span)) : 0,
-          }
-        })
+            pct: (result.percentages![dim.id] ?? 0) / 100,
+          }))
+        : Object.entries(result.scores).map(([k, v]) => ({ label: k, pct: 0 }))
 
   for (const bar of bars) {
     if (y > H - 190) break

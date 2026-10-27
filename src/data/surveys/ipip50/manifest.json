@@ -1,0 +1,9 @@
+{
+  "id": "ipip50",
+  "name": "大五人格测评（IPIP-50）",
+  "description": "基于大五人格模型（OCEAN）的公版自评量表：开放性、尽责性、外向性、宜人性、神经质五个维度各 10 题，展现你的人格特质剖面。",
+  "estimatedMinutes": 10,
+  "disclaimer": "题库来自 IPIP（International Personality Item Pool，国际人格题库），由 Lewis R. Goldberg 编制，属公有领域（public domain）。本测评反映自我报告的人格倾向，人格特质无好坏之分，结果仅供自我探索参考，不构成专业心理评估。",
+  "version": "1.0.0",
+  "category": "personality"
+}
