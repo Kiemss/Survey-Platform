@@ -122,13 +122,22 @@ export function computeResult(
     }
     resultId = letters.join('')
   } else if (cfg.strategy === 'dimensions') {
-    // 多维度剖面：按各维度理论满分归一化，结果 id 取最高维度
+    // 多维度剖面：按各维度理论满分归一化，结果 id 取最高维度。
+    // scale 题的理论满分 = 该维度题数 × 满分；single 题（强制选择）逐题累加该维度可得的最大分
     percentages = {}
     let topKey = ''
     let topPct = -1
     for (const dim of cfg.dimensions ?? []) {
-      const qCount = pkg.questions.filter((q) => q.dimension === dim.id).length
-      const max = qCount * (pkg.questions.find((q) => q.dimension === dim.id)?.scalePoints ?? 5)
+      let max = 0
+      for (const q of pkg.questions) {
+        if (q.type === 'scale') {
+          if (q.dimension === dim.id) max += q.scalePoints ?? 5
+        } else {
+          let best = 0
+          for (const opt of q.options ?? []) best = Math.max(best, opt.score?.[dim.id] ?? 0)
+          max += best
+        }
+      }
       const pct = max > 0 ? Math.round(((scores[dim.id] ?? 0) / max) * 100) : 0
       percentages[dim.id] = pct
       if (pct > topPct) {

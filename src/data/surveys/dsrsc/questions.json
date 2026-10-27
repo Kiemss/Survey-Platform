@@ -1,0 +1,20 @@
+[
+  { "id": "q1", "type": "single", "text": "我像以往一样盼望着令人高兴的事情。", "options": [{ "label": "是", "score": { "total": 0 } }, { "label": "否", "score": { "total": 1 } }] },
+  { "id": "q2", "type": "single", "text": "我晚上睡得很好。", "options": [{ "label": "是", "score": { "total": 0 } }, { "label": "否", "score": { "total": 1 } }] },
+  { "id": "q3", "type": "single", "text": "我感到想哭或容易哭。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q4", "type": "single", "text": "我愿意像平时一样出去玩、做喜欢的事。", "options": [{ "label": "是", "score": { "total": 0 } }, { "label": "否", "score": { "total": 1 } }] },
+  { "id": "q5", "type": "single", "text": "我像以前一样从做事情中感到乐趣。", "options": [{ "label": "是", "score": { "total": 0 } }, { "label": "否", "score": { "total": 1 } }] },
+  { "id": "q6", "type": "single", "text": "我喜欢和家人在一起聊天。", "options": [{ "label": "是", "score": { "total": 0 } }, { "label": "否", "score": { "total": 1 } }] },
+  { "id": "q7", "type": "single", "text": "我做噩梦。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q8", "type": "single", "text": "我感到孤独。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q9", "type": "single", "text": "我是快乐的。", "options": [{ "label": "是", "score": { "total": 0 } }, { "label": "否", "score": { "total": 1 } }] },
+  { "id": "q10", "type": "single", "text": "我感到悲伤、难过。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q11", "type": "single", "text": "我为将来会怎样而担心。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q12", "type": "single", "text": "我想离家出走。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q13", "type": "single", "text": "我会感到身体不舒服（如头痛、肚子痛、恶心）。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q14", "type": "single", "text": "我感到精力充沛。", "options": [{ "label": "是", "score": { "total": 0 } }, { "label": "否", "score": { "total": 1 } }] },
+  { "id": "q15", "type": "single", "text": "我喜欢上学（上课）。", "options": [{ "label": "是", "score": { "total": 0 } }, { "label": "否", "score": { "total": 1 } }] },
+  { "id": "q16", "type": "single", "text": "我能开怀大笑，觉得事情有趣。", "options": [{ "label": "是", "score": { "total": 0 } }, { "label": "否", "score": { "total": 1 } }] },
+  { "id": "q17", "type": "single", "text": "我觉得没有我，家人会过得更好。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q18", "type": "single", "text": "我容易感到疲乏。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] }
+]

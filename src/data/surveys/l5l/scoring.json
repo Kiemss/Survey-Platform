@@ -1,0 +1,10 @@
+{
+  "strategy": "dimensions",
+  "dimensions": [
+    { "id": "words", "name": "肯定的言词" },
+    { "id": "time", "name": "精心的时刻" },
+    { "id": "gifts", "name": "接受礼物" },
+    { "id": "service", "name": "服务的行动" },
+    { "id": "touch", "name": "身体的接触" }
+  ]
+}

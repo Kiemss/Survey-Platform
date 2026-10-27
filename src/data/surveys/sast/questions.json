@@ -1,0 +1,22 @@
+[
+  { "id": "s1", "type": "single", "text": "我感到自己的某些性行为已经失控，想停却停不下来。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s2", "type": "single", "text": "我曾对自己的性想法或性行为感到强烈的羞耻或自我厌恶。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s3", "type": "single", "text": "我曾用性行为（包括浏览色情内容）来逃避压力、孤独或空虚。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s4", "type": "single", "text": "我曾向伴侣、家人或朋友隐瞒我的某些性行为。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s5", "type": "single", "text": "我曾尝试减少或停止某些性行为，但没有成功。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s6", "type": "single", "text": "我需要越来越频繁或越来越冒险的性刺激，才能获得同样的满足。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s7", "type": "single", "text": "我曾因性行为而影响到工作、学业或重要的人际关系。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s8", "type": "single", "text": "我会在本该处理正事的时间，忍不住进行与性相关的活动。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s9", "type": "single", "text": "我曾做出违背自己价值观或承诺的性行为。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s10", "type": "single", "text": "与性相关的想法和行为，占据了我越来越多的时间和精力。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s11", "type": "single", "text": "我曾试图用性来填补内心的空虚感。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s12", "type": "single", "text": "我曾在性方面冒很大的风险，事后感到后怕或后悔。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s13", "type": "single", "text": "我常在情绪低落时靠性来让自己好受一点。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s14", "type": "single", "text": "我曾因性方面的困扰而长期情绪低落或焦虑。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s15", "type": "single", "text": "我难以和伴侣建立不掺杂「性目的」的亲密关系。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s16", "type": "single", "text": "我曾把自己的性需要看得比伴侣的需要更重要。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s17", "type": "single", "text": "即使明知某种性行为会带来严重后果，我仍会去做。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s18", "type": "single", "text": "我曾觉得自己在性方面「上瘾」了。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s19", "type": "single", "text": "我常觉得必须对自己的性行为严格保密，害怕被发现。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "s20", "type": "single", "text": "我曾想寻求帮助来处理性方面的困扰。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] }
+]

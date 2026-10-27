@@ -1,0 +1,12 @@
+[
+  { "id": "g1", "type": "single", "text": "我常常玩电子游戏的时间比原计划的更长。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "g2", "type": "single", "text": "我曾多次尝试减少或停止游戏，但都没有成功。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "g3", "type": "single", "text": "我会为了游戏而熬夜，甚至牺牲睡眠。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "g4", "type": "single", "text": "学习或工作时，我脑子里常常惦记着游戏。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "g5", "type": "single", "text": "游戏是我逃避烦恼（压力、低落、孤独）的主要方式。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "g6", "type": "single", "text": "我曾为了游戏推掉重要的学习、工作或社交安排。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "g7", "type": "single", "text": "不能玩游戏时，我会烦躁、易怒或情绪低落。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "g8", "type": "single", "text": "我需要玩得越来越多、越来越久，才能获得同样的满足感。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "g9", "type": "single", "text": "我曾向家人朋友隐瞒自己玩游戏的真实时长或花费。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "g10", "type": "single", "text": "游戏已对我的学业/工作、人际关系或健康造成明显影响。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] }
+]

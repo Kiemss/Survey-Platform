@@ -1,0 +1,9 @@
+{
+  "id": "dsrsc",
+  "name": "儿童抑郁障碍自评量表（DSRSC）",
+  "description": "Birleson 编制、国内修订的儿童青少年抑郁自评量表（18 题，是/否作答），适用于 7-17 岁儿童青少年评估近期抑郁症状。",
+  "estimatedMinutes": 4,
+  "disclaimer": "DSRSC 适用于 7-17 岁儿童青少年自评，低龄儿童建议由家长或老师协助理解题意。结果仅供自我探索参考，不构成医学诊断；如有困扰请寻求儿童精神科医生或心理咨询师帮助。",
+  "version": "1.0.0",
+  "category": "depression"
+}

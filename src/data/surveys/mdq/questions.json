@@ -1,0 +1,15 @@
+[
+  { "id": "q1", "type": "single", "text": "感到自己特别好或特别亢奋，以至于别人觉得你和平时不一样，甚至因此惹上麻烦。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q2", "type": "single", "text": "特别容易发脾气，以至于朝别人大喊大叫，或与人争吵、冲突。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q3", "type": "single", "text": "感到比平时自信得多。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q4", "type": "single", "text": "睡眠明显比平时少，却并不觉得困倦、没精神。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q5", "type": "single", "text": "比平时话多，或说话语速明显加快。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q6", "type": "single", "text": "脑子里想法不断涌现，或思维怎么也停不下来。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q7", "type": "single", "text": "很容易被周围的事情分心，难以集中注意力。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q8", "type": "single", "text": "精力比平时旺盛得多。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q9", "type": "single", "text": "比平时活跃，做的事情比平时多得多。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q10", "type": "single", "text": "比平时更爱社交、更外向，比如半夜给朋友打电话。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q11", "type": "single", "text": "性方面的兴趣比平时明显增强。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q12", "type": "single", "text": "做了对你来说不寻常的事，或别人会觉得过度、愚蠢、冒险的事。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] },
+  { "id": "q13", "type": "single", "text": "花钱花到让自己或家人陷入经济困境。", "options": [{ "label": "是", "score": { "total": 1 } }, { "label": "否", "score": { "total": 0 } }] }
+]

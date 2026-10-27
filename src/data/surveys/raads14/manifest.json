@@ -1,0 +1,9 @@
+{
+  "id": "raads14",
+  "name": "成人自闭症筛查（RAADS-14）",
+  "description": "依据 Eriksson 等从 RAADS-R 中精选条目编制的 RAADS-14 整理改编的成人自评筛查，覆盖心智化困难、社交不安与感觉敏感三方面，共 14 题。请根据你近年的真实情况作答。",
+  "estimatedMinutes": 5,
+  "disclaimer": "题库依据 Eriksson、Andersen 与 Bejerot（2013）编制的 RAADS-14 整理改编，仅适用于成年人自评；界值参照通行标准（≥14 提示建议进一步评估）。筛查结果不是孤独症谱系障碍的诊断，确诊需精神科医生或专业机构综合评估。结果仅供自我探索参考，不构成医学诊断；如有困扰请寻求专业人士帮助。",
+  "version": "1.0.0",
+  "category": "autism"
+}

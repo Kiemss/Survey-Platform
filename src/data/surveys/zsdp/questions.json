@@ -1,0 +1,22 @@
+[
+  { "id": "q1", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我感到情绪低落，闷闷不乐" },
+  { "id": "q2", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我做事情时注意力难以集中" },
+  { "id": "q3", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我觉得疲乏无力，精力不足" },
+  { "id": "q4", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我对学习以外的事情也有兴趣", "reverse": true },
+  { "id": "q5", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我会无缘无故地想哭" },
+  { "id": "q6", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我早上醒来就感到心情沉重，不想起床上学" },
+  { "id": "q7", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我觉得自己比不上别的同学" },
+  { "id": "q8", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我晚上睡得很好", "reverse": true },
+  { "id": "q9", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我上课或写作业时脑子发木，反应变慢" },
+  { "id": "q10", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我不想和任何人说话，喜欢一个人待着" },
+  { "id": "q11", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我觉得未来是有希望的", "reverse": true },
+  { "id": "q12", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我觉得做任何事情都很费力" },
+  { "id": "q13", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我的胃口和平时一样好", "reverse": true },
+  { "id": "q14", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我容易自责，觉得都是自己的错" },
+  { "id": "q15", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我对以前喜欢的事情失去了兴趣" },
+  { "id": "q16", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我和同学朋友相处得愉快", "reverse": true },
+  { "id": "q17", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我觉得活着没什么意思" },
+  { "id": "q18", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我觉得自己是有价值的人", "reverse": true },
+  { "id": "q19", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我因心情不好而影响了学习或考试发挥" },
+  { "id": "q20", "type": "scale", "scalePoints": 4, "scaleLabels": ["从不", "偶尔", "经常", "总是"], "text": "我能从日常小事中感到快乐", "reverse": true }
+]

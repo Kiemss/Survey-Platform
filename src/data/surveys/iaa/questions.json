@@ -1,0 +1,22 @@
+[
+  { "id": "i1", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "我上网的时间常常比原计划的更长。" },
+  { "id": "i2", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "我会因为上网而拖延或忽略该做的家务与正事。" },
+  { "id": "i3", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "上网的刺激对我而言，比与身边人的亲密相处更有吸引力。" },
+  { "id": "i4", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "不上网的时候，我也总惦记着网上的事，或幻想重新上线。" },
+  { "id": "i5", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "我能坦然、不隐瞒地告诉别人我在网上做了什么。", "reverse": true },
+  { "id": "i6", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "上网之前，我必须先查看消息或邮件，否则就坐立不安。" },
+  { "id": "i7", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "上网影响了我的工作表现或学习效率。" },
+  { "id": "i8", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "别人问我在网上做什么时，我会防卫或有所隐瞒。" },
+  { "id": "i9", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "我会用上网来排解生活中的烦恼与负面情绪。" },
+  { "id": "i10", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "即使有人打扰，我在上网时也很少发脾气或感到烦躁。", "reverse": true },
+  { "id": "i11", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "我常因深夜上网而睡眠不足。" },
+  { "id": "i12", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "我觉得没有网络的生活会枯燥、空虚、毫无乐趣。" },
+  { "id": "i13", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "我曾多次尝试减少上网时间，但都没有成功。" },
+  { "id": "i14", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "我更愿意上网，而不是出门与朋友、家人相聚。" },
+  { "id": "i15", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "我的作息依然规律，很少因上网而熬夜。", "reverse": true },
+  { "id": "i16", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "离线时我会感到情绪低落、烦躁或焦虑，一旦上网就好转。" },
+  { "id": "i17", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "我常说「再玩几分钟就好」，结果却停不下来。" },
+  { "id": "i18", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "除了上网，我还有很多让我投入和快乐的事情。", "reverse": true },
+  { "id": "i19", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "我对上网这件事有清晰的掌控感，说停就能停。", "reverse": true },
+  { "id": "i20", "type": "scale", "scalePoints": 5, "scaleLabels": ["几乎没有", "偶尔", "有时", "经常", "总是"], "text": "身边的人常向我抱怨我花在网络上的时间太多。" }
+]
