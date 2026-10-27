@@ -40,7 +40,19 @@
     <main class="main">
       <RouterView />
     </main>
-    <footer class="footer">本站测评仅供自我探索参考，不构成医学诊断</footer>
+    <footer class="footer">
+      <div class="footer-line">
+        <span>© 2026 Kiemss · 本站测评仅供自我探索参考，不构成医学诊断</span>
+        <a
+          href="https://github.com/Kiemss/Survey-Platform"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-link"
+        >
+          GitHub 开源
+        </a>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -229,6 +241,22 @@ onUnmounted(() => {
   color: var(--muted);
   font-size: 12px;
   border-top: 1px solid var(--line);
+}
+.footer-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.footer-link {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.footer-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 @media (max-width: 480px) {
   .topbar {
