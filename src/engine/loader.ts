@@ -7,11 +7,16 @@ import type {
 
 /**
  * 量表包注册表：Vite 的 import.meta.glob 在构建期收集 surveys/ 下所有量表包。
- * 新增量表 = 新建文件夹放入 4 个 JSON，引擎自动发现，无需改代码。
+ * 新增量表 = 新建文件夹放入 JSON，引擎自动发现，无需改代码。
+ * 结果文案可放在量表包内（results.json），也可放在 families/<家族>/results.json 由同家族模板共享。
  */
 const modules = import.meta.glob('/src/data/surveys/*/*.json', {
   eager: true,
 }) as Record<string, unknown>
+
+const familyResults = import.meta.glob('/src/data/families/*/results.json', {
+  eager: true,
+}) as Record<string, { default: SurveyPackage['results'] }>
 
 function pick<T>(surveyId: string, file: string): T {
   // JSON 以 ES Module 导入，实际数据挂在 default 上
@@ -32,11 +37,27 @@ export function listSurveyIds(): string[] {
 }
 
 export function getSurveyPackage(surveyId: string): SurveyPackage {
+  const manifest = pick(surveyId, 'manifest.json')
+  let results
+  const local = modules[`/src/data/surveys/${surveyId}/results.json`] as
+    | { default: SurveyPackage['results'] }
+    | undefined
+  if (local) {
+    results = local.default
+  } else if (manifest.family) {
+    // 家族共享结果文案：从 families/<family>/results.json 读取
+    const shared = familyResults[`/src/data/families/${manifest.family}/results.json`]
+    if (!shared)
+      throw new Error(`量表包 ${surveyId} 缺少 results.json，且家族 ${manifest.family} 无共享结果`)
+    results = shared.default
+  } else {
+    throw new Error(`量表包 ${surveyId} 缺少 results.json`)
+  }
   return {
-    manifest: pick(surveyId, 'manifest.json'),
+    manifest,
     questions: pick(surveyId, 'questions.json'),
     scoring: pick(surveyId, 'scoring.json'),
-    results: pick(surveyId, 'results.json'),
+    results,
   }
 }
 

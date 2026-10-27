@@ -13,6 +13,15 @@ export interface SurveyManifest {
   /** 结果页展示的免责/科普说明，尤其心理类量表需要 */
   disclaimer?: string
   version: string
+  /** 一级学科分类 id，对应 categories.ts 注册表；缺省归入 psychology */
+  category?: string
+  /**
+   * 量表家族 id：同家族的多套模板共享结果文案（families/<family>/results.json）。
+   * 设置 family 后量表包内可省略 results.json
+   */
+  family?: string
+  /** 家族内的模板名，如「完整版 93 题」，家族共享结果时建议填写 */
+  variant?: string
 }
 
 export type QuestionType = 'single' | 'scale'
