@@ -40,7 +40,6 @@ const sheetOpen = ref(false)
 function goTo(i: number) {
   window.clearTimeout(autoTimer)
   index.value = i
-  sheetOpen.value = false
 }
 
 const unansweredCount = computed(() => questions.length - answeredCount.value)
@@ -52,7 +51,6 @@ function restart() {
   localStorage.removeItem(DRAFT_KEY)
   resumed.value = false
   index.value = 0
-  sheetOpen.value = false
 }
 
 function choose(qid: string, value: number) {
