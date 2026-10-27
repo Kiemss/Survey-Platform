@@ -37,6 +37,18 @@
 5. 排障记录：dev 服务器曾报 `Cannot read properties of null (reading 'component')`，经生产预览隔离验证为旧会话 HMR 残留日志，非代码问题（生产构建与 4173 预览均正常）。
 6. Cloudflare Git 集成已由用户修复，部署回归「推送 GitHub → CF 自动构建」通道。
 
+### 已完成（v0.3 第四批：开源化 + 大五家族扩容）
+
+1. **开源化**：README.md（特性/量表表/新增测评指南/MIT）、LICENSE（MIT）；页脚极简化（© 版权 · 免责声明 · GitHub 开源链接）。
+2. **设计规范文档**：[docs/design-system.md](docs/design-system.md)——色彩变量表/字号档位/4px 间距基数/圆角阴影/组件规范/页面骨架/变更流程，作为后续视觉打磨的唯一规范。
+3. **大五家族扩容（bigfive 家族）**：IPIP-NEO 120 题（25 分钟）与 300 题（60 分钟）上线，题目与反向计分键来自 IPIP 官网（30FacetNEO-PI-RItems.htm / newNEOFacetsKey.htm，经官方 300-120 对照表交叉验证），三版本（50/120/300）共享 families/bigfive/results.json 文案。校验通过（5 量表 / 2 家族）。
+4. 部署验证：`032554c` 推送后 CF 自动构建成功（线上指纹 index-C-xJBf3B），Git 集成通道确认恢复。
+
+### 待办（v0.3 剩余）
+
+1. 趣味测试首秀：1-2 个搞笑测试（fun 分类）
+2. 版面优化（按 design-system.md）：整体设计系统打磨、答题页视觉、结果页升级（雷达图等）
+
 ---
 
 ## 2026-10-27（第六次更新：v0.3 启动——学科分类与量表家族）
