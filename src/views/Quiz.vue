@@ -19,6 +19,9 @@ const answers = reactive<Record<string, number>>(
   JSON.parse(localStorage.getItem(DRAFT_KEY) ?? 'null') ?? {},
 )
 
+// 是否恢复了上次进度（给出明确提示 + 重新开始入口，避免「凭空高亮」的困惑）
+const resumed = ref(Object.keys(answers).length > 0)
+
 const index = ref(0)
 const current = computed(() => questions[index.value])
 const currentAnswer = computed(() => answers[current.value.id])
@@ -41,6 +44,16 @@ function goTo(i: number) {
 }
 
 const unansweredCount = computed(() => questions.length - answeredCount.value)
+
+/** 重新开始：清除草稿并回到第 1 题 */
+function restart() {
+  window.clearTimeout(autoTimer)
+  for (const k of Object.keys(answers)) delete answers[k]
+  localStorage.removeItem(DRAFT_KEY)
+  resumed.value = false
+  index.value = 0
+  sheetOpen.value = false
+}
 
 function choose(qid: string, value: number) {
   answers[qid] = value
@@ -109,6 +122,10 @@ async function submit() {
   <div>
     <div class="progress-bar">
       <div class="progress" :style="{ width: progress + '%' }" />
+    </div>
+    <div v-if="resumed" class="resume-banner">
+      <span>已恢复上次的作答进度（已答 {{ answeredCount }}/{{ questions.length }}）</span>
+      <button class="restart-btn" @click="restart">重新开始</button>
     </div>
     <div class="quiz-bar">
       <p class="count">第 {{ index + 1 }} / {{ questions.length }} 题</p>
@@ -218,6 +235,29 @@ async function submit() {
   justify-content: space-between;
   gap: 12px;
   margin: 10px 0 4px;
+}
+.resume-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--accent);
+  background: var(--accent-weak);
+  color: var(--accent);
+  border-radius: 8px;
+  font-size: 13px;
+}
+.restart-btn {
+  border: none;
+  background: transparent;
+  color: inherit;
+  text-decoration: underline;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
 }
 .question-card {
   min-height: 220px;
