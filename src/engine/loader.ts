@@ -1,6 +1,7 @@
 import type {
   Question,
   ScoringConfig,
+  SurveyManifest,
   SurveyPackage,
   SurveyResult,
 } from './types'
@@ -37,7 +38,7 @@ export function listSurveyIds(): string[] {
 }
 
 export function getSurveyPackage(surveyId: string): SurveyPackage {
-  const manifest = pick(surveyId, 'manifest.json')
+  const manifest = pick<SurveyManifest>(surveyId, 'manifest.json')
   let results
   const local = modules[`/src/data/surveys/${surveyId}/results.json`] as
     | { default: SurveyPackage['results'] }
@@ -148,17 +149,17 @@ export function computeResult(
     resultId = topKey
   } else if (cfg.strategy === 'quadrant') {
     // 四象限：两独立维度归一化后按 cutoff 分高低，查 map
-    percentages = {}
+    const p: Record<string, number> = {}
     let id = ''
     const quads = cfg.quadrant?.dimensions ?? []
-    quads.forEach((dim, i) => {
+    quads.forEach((dim) => {
       const qCount = pkg.questions.filter((q) => q.dimension === dim.id).length
       const max = qCount * (pkg.questions.find((q) => q.dimension === dim.id)?.scalePoints ?? 5)
       const pct = max > 0 ? Math.round(((scores[dim.id] ?? 0) / max) * 100) : 0
-      percentages[dim.id] = pct
+      p[dim.id] = pct
       id += pct >= dim.cutoff ? dim.id[0].toUpperCase() : dim.id[0].toLowerCase()
-      void i
     })
+    percentages = p
     resultId = cfg.quadrant?.map?.[id] ?? id
   } else {
     const key = cfg.key ?? 'total'
