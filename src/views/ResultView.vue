@@ -78,6 +78,7 @@ const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total
   <div v-if="detail">
     <h1>你的测评结果</h1>
 
+    <!-- ① 主结果卡：代号 + 标题 + 表盘（thresholds） -->
     <div class="card result-card">
       <p class="result-id font-display">{{ detail.resultId }}</p>
       <h2>{{ detail.info.title }}</h2>
@@ -89,14 +90,10 @@ const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total
         :bands="gaugeBands"
         :results="pkg.results"
       />
-      <p class="desc">{{ detail.info.description }}</p>
-      <ul v-if="detail.info.suggestions" class="suggestions">
-        <li v-for="(s, i) in detail.info.suggestions" :key="i">{{ s }}</li>
-      </ul>
     </div>
 
-    <!-- letter-pairs 量表：维度倾向条形图 -->
-    <div v-if="pairs.length" class="card">
+    <!-- ② 数据可视化卡：letter-pairs 双向条 / dimensions·quadrant 剖面条 / thresholds 总分 -->
+    <div v-if="pairs.length" class="card viz-card">
       <h3>维度倾向</h3>
       <div v-for="p in pairs" :key="p.a + p.b" class="dim">
         <div class="dim-labels">
@@ -110,7 +107,7 @@ const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total
     </div>
 
     <!-- dimensions 量表：多维度剖面图 -->
-    <div v-else-if="dimBars.length" class="card">
+    <div v-else-if="dimBars.length" class="card viz-card">
       <h3>维度剖面</h3>
       <div v-for="d in dimBars" :key="d.id" class="dim">
         <div class="dim-labels">
@@ -123,11 +120,20 @@ const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total
     </div>
 
     <!-- thresholds 量表：原始分 -->
-    <div v-else-if="pkg.scoring.strategy === 'thresholds'" class="card">
+    <div v-else-if="pkg.scoring.strategy === 'thresholds'" class="card viz-card">
       <h3>得分详情</h3>
       <p class="score">
         总分：<strong>{{ detail.scores.total ?? 0 }}</strong>
       </p>
+    </div>
+
+    <!-- ③ 解读卡：描述 + 建议 -->
+    <div v-if="detail.info.description || detail.info.suggestions" class="card read-card">
+      <h3>结果解读</h3>
+      <p v-if="detail.info.description" class="desc">{{ detail.info.description }}</p>
+      <ul v-if="detail.info.suggestions" class="suggestions">
+        <li v-for="(s, i) in detail.info.suggestions" :key="i">{{ s }}</li>
+      </ul>
     </div>
 
     <p v-if="pkg.manifest.disclaimer" class="disclaimer">{{ pkg.manifest.disclaimer }}</p>
@@ -148,6 +154,16 @@ const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total
 .result-card {
   text-align: center;
   padding: 32px 20px;
+}
+.viz-card,
+.read-card {
+  margin-top: 14px;
+}
+.viz-card h3,
+.read-card h3 {
+  margin: 0 0 14px;
+  font-size: 15px;
+  color: var(--muted);
 }
 .result-id {
   font-size: 40px;
@@ -218,6 +234,9 @@ const totalScore = computed(() => result.value?.scores[pkg.scoring.key ?? 'total
   }
   .result-id {
     font-size: 32px;
+  }
+  .dim-labels {
+    font-size: 13px;
   }
   .actions .btn,
   .actions .btn.ghost {

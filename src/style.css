@@ -92,3 +92,26 @@ button {
   color: var(--muted);
   cursor: not-allowed;
 }
+
+/* 触屏：去除点击高亮闪烁，按钮维持最小 44px 触控高度 */
+@media (hover: none) and (pointer: coarse) {
+  .btn,
+  .option {
+    -webkit-tap-highlight-color: transparent;
+    min-height: 44px;
+  }
+}
+
+/* 窄屏全局基础调整 */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+  .card {
+    padding: 16px;
+    border-radius: 10px;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+}

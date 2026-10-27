@@ -375,8 +375,22 @@ async function submit() {
   .option {
     padding: 14px 16px;
   }
+  /* 李克特选项在窄屏改双列网格，标签不再挤压换行 */
+  .options.scale {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
   .options.scale .option {
-    min-width: 64px;
+    min-width: 0;
+    padding: 12px 8px;
+  }
+  /* 答题卡格子加大触控区 */
+  .sheet-cell {
+    padding: 9px 0;
+    font-size: 14px;
+  }
+  .sheet-grid {
+    max-height: 240px;
   }
   .nav {
     flex-wrap: wrap;

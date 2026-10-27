@@ -340,7 +340,18 @@ const testedIds = new Set(analytics.getHistory().map((r) => r.surveyId))
   color: var(--text);
 }
 @media (max-width: 480px) {
+  /* 分类 Tab 单行横滑，避免多行换行占屏 */
+  .cat-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .cat-tabs::-webkit-scrollbar {
+    display: none;
+  }
   .cat-tab {
+    flex: none;
     padding: 8px 12px;
     font-size: 13px;
   }
