@@ -3,7 +3,7 @@ import { computed, onUnmounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { computeResult, getSurveyPackage, scaleOptions } from '../engine/loader'
 import { analytics } from '../engine/analytics'
-import { loadSettings, saveSettings } from '../engine/settings'
+import { settings } from '../engine/settings'
 import type { SurveyResult } from '../engine/types'
 
 const route = useRoute()
@@ -24,38 +24,8 @@ const current = computed(() => questions[index.value])
 const currentAnswer = computed(() => answers[current.value.id])
 const progress = computed(() => Math.round(((index.value + 1) / questions.length) * 100))
 
-// 自动下一题（设置持久化）
-const initial = loadSettings()
-const autoNext = ref(initial.autoNext)
-const autoNextDelay = ref(initial.autoNextDelay)
+// 自动跳转计时器（设置项来自全局 store，见顶栏 ⚙）
 let autoTimer: number | undefined
-
-// 设置下拉面板
-const settingsOpen = ref(false)
-const settingsRef = ref<HTMLElement | null>(null)
-
-function toggleAutoNext() {
-  autoNext.value = !autoNext.value
-  saveSettings({ autoNext: autoNext.value })
-}
-
-function setDelay(v: number) {
-  // 钳制在 100–2000ms，防止 0（无反馈）或离谱值
-  const clamped = Math.min(2000, Math.max(100, Math.round(v || 0)))
-  autoNextDelay.value = clamped
-  saveSettings({ autoNextDelay: clamped })
-}
-
-function onDocClick(e: MouseEvent) {
-  if (settingsRef.value && !settingsRef.value.contains(e.target as Node)) {
-    settingsOpen.value = false
-  }
-}
-document.addEventListener('click', onDocClick)
-onUnmounted(() => {
-  document.removeEventListener('click', onDocClick)
-  window.clearTimeout(autoTimer)
-})
 
 const submitting = ref(false)
 
@@ -64,9 +34,9 @@ function choose(qid: string, value: number) {
   localStorage.setItem(DRAFT_KEY, JSON.stringify(answers))
 
   // 自动下一题：非最后一题时延迟跳转，给选中态留出视觉反馈
-  if (autoNext.value && index.value < questions.length - 1) {
+  if (settings.autoNext && index.value < questions.length - 1) {
     window.clearTimeout(autoTimer)
-    autoTimer = window.setTimeout(next, autoNextDelay.value)
+    autoTimer = window.setTimeout(next, settings.autoNextDelay)
   }
 }
 
@@ -79,6 +49,8 @@ function prev() {
   window.clearTimeout(autoTimer)
   if (index.value > 0) index.value--
 }
+
+onUnmounted(() => window.clearTimeout(autoTimer))
 
 async function submit() {
   submitting.value = true
@@ -102,28 +74,7 @@ async function submit() {
     </div>
     <div class="quiz-bar">
       <p class="count">第 {{ index + 1 }} / {{ questions.length }} 题</p>
-      <div class="settings-wrap" ref="settingsRef">
-        <button class="gear-btn" title="设置" @click="settingsOpen = !settingsOpen">⚙</button>
-        <div v-if="settingsOpen" class="settings-panel">
-          <label class="setting-row" @click.prevent="toggleAutoNext">
-            <span>自动下一题</span>
-            <span class="switch" :class="{ on: autoNext }" />
-          </label>
-          <div class="setting-row col">
-            <span>跳转速度（毫秒）</span>
-            <input
-              class="delay-input"
-              type="number"
-              min="100"
-              max="2000"
-              step="50"
-              :value="autoNextDelay"
-              :disabled="!autoNext"
-              @change="setDelay(Number(($event.target as HTMLInputElement).value))"
-            />
-          </div>
-        </div>
-      </div>
+      <p class="hint">设置见右上角 ⚙</p>
     </div>
 
     <div class="card question-card">
@@ -201,86 +152,10 @@ async function submit() {
   gap: 12px;
   margin: 10px 0 4px;
 }
-.settings-wrap {
-  position: relative;
-}
-.gear-btn {
-  border: none;
-  background: transparent;
-  font-size: 20px;
-  cursor: pointer;
+.hint {
   color: var(--muted);
-  line-height: 1;
-  padding: 4px;
-  border-radius: 6px;
-  transition: color 0.15s;
-}
-.gear-btn:hover {
-  color: var(--accent);
-}
-.settings-panel {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 8px);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  padding: 12px 14px;
-  width: 200px;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.setting-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
-  cursor: pointer;
-  gap: 10px;
-}
-.setting-row.col {
-  flex-direction: column;
-  align-items: stretch;
-  cursor: default;
-  gap: 6px;
-}
-.setting-row.col .delay-input {
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 6px 8px;
-  font-size: 13px;
-  background: var(--card);
-  color: var(--text);
-}
-.switch {
-  width: 36px;
-  height: 20px;
-  border-radius: 10px;
-  background: var(--line);
-  position: relative;
-  transition: background 0.15s;
-  flex: none;
-}
-.switch::after {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--card);
-  transition: left 0.15s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-.switch.on {
-  background: var(--accent);
-}
-.switch.on::after {
-  left: 18px;
+  font-size: 12px;
+  margin: 0;
 }
 .question-card {
   min-height: 220px;
@@ -333,5 +208,22 @@ async function submit() {
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--line);
+}
+@media (max-width: 480px) {
+  .q-text {
+    font-size: 16px;
+  }
+  .option {
+    padding: 14px 16px;
+  }
+  .options.scale .option {
+    min-width: 64px;
+  }
+  .nav {
+    flex-wrap: wrap;
+  }
+  .nav .btn {
+    flex: 1;
+  }
 }
 </style>

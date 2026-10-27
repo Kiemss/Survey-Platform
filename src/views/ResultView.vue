@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { getSurveyPackage } from '../engine/loader'
 import { analytics } from '../engine/analytics'
+import { downloadShareCard } from '../engine/share'
 import type { SurveyResult } from '../engine/types'
 
 const route = useRoute()
@@ -84,6 +85,7 @@ const pairs = computed(() => {
     <p v-if="pkg.manifest.disclaimer" class="disclaimer">{{ pkg.manifest.disclaimer }}</p>
 
     <div class="actions">
+      <button class="btn" @click="downloadShareCard(pkg, result!)">保存分享图</button>
       <RouterLink class="btn ghost" :to="`/survey/${surveyId}`">再测一次</RouterLink>
       <RouterLink class="btn ghost" to="/">返回首页</RouterLink>
     </div>
@@ -151,11 +153,25 @@ const pairs = computed(() => {
   margin-top: 16px;
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 .btn.ghost {
   background: var(--card);
   color: var(--text);
   border: 1px solid var(--line);
   text-decoration: none;
+}
+@media (max-width: 480px) {
+  .result-card {
+    padding: 24px 16px;
+  }
+  .result-id {
+    font-size: 32px;
+  }
+  .actions .btn,
+  .actions .btn.ghost {
+    flex: 1;
+    text-align: center;
+  }
 }
 </style>

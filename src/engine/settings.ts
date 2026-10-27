@@ -1,6 +1,9 @@
+import { reactive, watch } from 'vue'
+
 /**
  * 应用设置（客户端持久化）
- * 存储于 localStorage；后续新增设置项在此扩展字段并写默认值即可。
+ * 全局响应式 store：任何组件读写 settings 都会实时同步并持久化到 localStorage。
+ * 新增设置项：扩展 AppSettings 字段 + DEFAULTS 默认值即可。
  */
 export interface AppSettings {
   /** 答题后自动跳转下一题 */
@@ -19,7 +22,7 @@ const DEFAULTS: AppSettings = {
   theme: 'auto',
 }
 
-export function loadSettings(): AppSettings {
+function loadRaw(): AppSettings {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}')
     return { ...DEFAULTS, ...saved }
@@ -28,11 +31,12 @@ export function loadSettings(): AppSettings {
   }
 }
 
-export function saveSettings(patch: Partial<AppSettings>): AppSettings {
-  const merged = { ...loadSettings(), ...patch }
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(merged))
-  return merged
-}
+/** 全局响应式设置对象（组件直接 import 使用） */
+export const settings = reactive<AppSettings>(loadRaw())
+
+watch(settings, (s) => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(s))
+})
 
 /** auto 模式下跟随系统偏好 */
 export function effectiveTheme(s: AppSettings): 'light' | 'dark' {
@@ -43,6 +47,6 @@ export function effectiveTheme(s: AppSettings): 'light' | 'dark' {
 }
 
 /** 把当前主题应用到 <html> 根元素（style.css 用 :root.dark 变量） */
-export function applyTheme(s: AppSettings): void {
-  document.documentElement.classList.toggle('dark', effectiveTheme(s) === 'dark')
+export function applyTheme(): void {
+  document.documentElement.classList.toggle('dark', effectiveTheme(settings) === 'dark')
 }

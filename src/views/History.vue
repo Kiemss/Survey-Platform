@@ -152,4 +152,13 @@ h1 {
   text-align: center;
   color: var(--muted);
 }
+@media (max-width: 480px) {
+  .record {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .actions .btn {
+    flex: 1;
+  }
+}
 </style>
