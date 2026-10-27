@@ -1,0 +1,22 @@
+[
+  { "id": "s1", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我觉得闷闷不乐，情绪低沉" },
+  { "id": "s2", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我觉得一天中早晨最好", "reverse": true },
+  { "id": "s3", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我一阵阵哭出来或想哭" },
+  { "id": "s4", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我晚上睡眠不好" },
+  { "id": "s5", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我吃得跟平常一样多", "reverse": true },
+  { "id": "s6", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我与异性亲密接触时和以往一样感到愉快", "reverse": true },
+  { "id": "s7", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我发觉我的体重在下降" },
+  { "id": "s8", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我有便秘的烦恼" },
+  { "id": "s9", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我心跳比平时快" },
+  { "id": "s10", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我无缘无故地感到疲乏" },
+  { "id": "s11", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我的头脑跟平常一样清楚", "reverse": true },
+  { "id": "s12", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我觉得经常做的事情并没有困难", "reverse": true },
+  { "id": "s13", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我感到不安，静不下来" },
+  { "id": "s14", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我对将来抱有希望", "reverse": true },
+  { "id": "s15", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我比平常容易生气激动" },
+  { "id": "s16", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我觉得作出决定是容易的", "reverse": true },
+  { "id": "s17", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我觉得自己是个有用的人，有人需要我", "reverse": true },
+  { "id": "s18", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我的生活过得很有意思", "reverse": true },
+  { "id": "s19", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "我认为如果我死了别人会生活得好些" },
+  { "id": "s20", "type": "scale", "scalePoints": 4, "scaleLabels": ["没有或很少时间", "少部分时间", "相当多时间", "绝大部分或全部时间"], "text": "平常感兴趣的事我仍然感兴趣", "reverse": true }
+]

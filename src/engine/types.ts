@@ -1,0 +1,89 @@
+/**
+ * 量表包核心类型定义
+ * 一个"量表包" = surveys/<id>/ 下的 manifest.json + questions.json + scoring.json + results.json
+ * 详见 docs/survey-package-spec.md
+ */
+
+export interface SurveyManifest {
+  id: string
+  name: string
+  description: string
+  /** 预计用时（分钟） */
+  estimatedMinutes: number
+  /** 结果页展示的免责/科普说明，尤其心理类量表需要 */
+  disclaimer?: string
+  version: string
+}
+
+export type QuestionType = 'single' | 'scale'
+
+export interface QuestionOption {
+  label: string
+  /** 该选项对各维度/计分键的贡献。single 题型必填 */
+  score?: Record<string, number>
+}
+
+export interface Question {
+  id: string
+  text: string
+  type: QuestionType
+  /** single 题型的选项（带显式计分） */
+  options?: QuestionOption[]
+  /** scale 题型的计分维度键；缺省计到 "total" */
+  dimension?: string
+  /** scale 题型的维度权重，默认 1 */
+  weight?: number
+  /** scale 题型是否反向计分 */
+  reverse?: boolean
+  /** scale 题型的刻度数，默认 5 */
+  scalePoints?: number
+  /** scale 题型自定义刻度文案（从低到高），缺省用通用文案 */
+  scaleLabels?: string[]
+}
+
+/** scoring.json：计分与结果判定规则 */
+export interface ScoringConfig {
+  strategy: 'letter-pairs' | 'thresholds'
+  /**
+   * letter-pairs：维度配对，如 [["E","I"],["S","N"]]。
+   * 每对取得分高者为结果字母，按顺序拼接成结果 id（如 "INTJ"）
+   */
+  pairs?: [string, string][]
+  /**
+   * thresholds：对某个计分键按区间判级。
+   * key 缺省为 "total"；bands 需覆盖 [0, +∞)，自上而下匹配
+   */
+  key?: string
+  bands?: { min: number; max: number; resultId: string }[]
+}
+
+/** results.json：结果条目。key 为 resultId */
+export type ResultMap = Record<
+  string,
+  {
+    title: string
+    subtitle?: string
+    description: string
+    suggestions?: string[]
+  }
+>
+
+/** 引擎内组装完成的量表包 */
+export interface SurveyPackage {
+  manifest: SurveyManifest
+  questions: Question[]
+  scoring: ScoringConfig
+  results: ResultMap
+}
+
+/** 计分产出 */
+export interface SurveyResult {
+  surveyId: string
+  /** 结果 id（letter-pairs 拼接串或 thresholds 的 resultId） */
+  resultId: string
+  /** 各计分键原始得分 */
+  scores: Record<string, number>
+  /** letter-pairs 时各字母的归一化百分比（0-100），用于画条形图 */
+  percentages?: Record<string, number>
+  answeredAt: number
+}
