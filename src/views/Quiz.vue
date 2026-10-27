@@ -74,7 +74,6 @@ async function submit() {
     </div>
     <div class="quiz-bar">
       <p class="count">第 {{ index + 1 }} / {{ questions.length }} 题</p>
-      <p class="hint">设置见右上角 ⚙</p>
     </div>
 
     <div class="card question-card">
@@ -151,11 +150,6 @@ async function submit() {
   justify-content: space-between;
   gap: 12px;
   margin: 10px 0 4px;
-}
-.hint {
-  color: var(--muted);
-  font-size: 12px;
-  margin: 0;
 }
 .question-card {
   min-height: 220px;

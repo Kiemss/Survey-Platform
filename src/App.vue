@@ -9,14 +9,6 @@
           <div v-if="settingsOpen" class="settings-panel">
             <div class="panel-title">设置</div>
             <div class="setting-row">
-              <span>深色模式</span>
-              <select v-model="settings.theme" @change="applyTheme()">
-                <option value="auto">跟随系统</option>
-                <option value="light">浅色</option>
-                <option value="dark">深色</option>
-              </select>
-            </div>
-            <div class="setting-row">
               <span>自动下一题</span>
               <button
                 class="switch"
