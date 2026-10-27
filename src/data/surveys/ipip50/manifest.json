@@ -5,7 +5,7 @@
   "estimatedMinutes": 10,
   "disclaimer": "题库来自 IPIP（International Personality Item Pool，国际人格题库），由 Lewis R. Goldberg 编制，属公有领域（public domain）。本测评反映自我报告的人格倾向，人格特质无好坏之分，结果仅供自我探索参考，不构成专业心理评估。",
   "version": "1.0.0",
-  "category": "personality",
+  "category": "trait",
   "family": "bigfive",
   "variant": "简版 50 题"
 }
