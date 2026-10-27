@@ -1,9 +1,10 @@
 <template>
   <div class="app">
     <header class="topbar">
-      <RouterLink to="/" class="logo font-display">心理测评站</RouterLink>
+      <RouterLink to="/" class="logo font-display">绿帆心理测评</RouterLink>
       <nav class="nav">
-        <RouterLink to="/history" class="nav-link">历史</RouterLink>
+        <RouterLink to="/" class="nav-link" exact-active-class="nav-active">首页</RouterLink>
+        <RouterLink to="/history" class="nav-link" active-class="nav-active">历史</RouterLink>
         <div class="settings-wrap" ref="settingsRef">
           <button class="icon-btn" title="设置" @click="settingsOpen = !settingsOpen">⚙</button>
           <div v-if="settingsOpen" class="settings-panel">
@@ -126,12 +127,16 @@ onUnmounted(() => {
   flex-direction: column;
 }
 .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
   padding: 12px 24px;
   border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  background: var(--bg);
 }
 .logo {
   font-weight: 700;
@@ -164,6 +169,10 @@ onUnmounted(() => {
 }
 .nav-link:hover {
   color: var(--accent);
+}
+.nav-link.nav-active {
+  color: var(--accent);
+  font-weight: 600;
 }
 .settings-wrap {
   position: relative;
