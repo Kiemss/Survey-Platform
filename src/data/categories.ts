@@ -92,6 +92,7 @@ export const CATEGORIES: SurveyCategory[] = [
   { id: 'family', name: '家庭与婚姻', group: 'relationship' },
   // 趣味测试
   { id: 'fun', name: '趣味', group: 'fun' },
+  { id: 'lifestyle', name: '生活习惯', group: 'fun' },
 ]
 
 /** 量表默认归类（manifest 未声明 category 时落入） */

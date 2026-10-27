@@ -1,0 +1,9 @@
+{
+  "id": "pfs",
+  "name": "拖延症测试（PFS）",
+  "description": "基于 Svartdal 等发表的纯粹拖延量表（Pure Procrastination Scale，9 题）整理，测测你的「明日复明日」指数：任务拖延、临期赶工、浪费时间它全知道。轻松一测，顺便想想下一件事是不是该现在就开始。",
+  "estimatedMinutes": 3,
+  "disclaimer": "本测试题源为公开发表的 Pure Procrastination Scale（Svartdal, Steel & Svartdal, 2017）通行中文版整理，分界值为参考值（非官方常模）。结果仅供娱乐与自我觉察，不构成任何诊断或评估。",
+  "version": "1.0.0",
+  "category": "lifestyle"
+}

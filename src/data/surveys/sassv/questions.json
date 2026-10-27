@@ -1,0 +1,12 @@
+[
+  { "id": "q1", "type": "scale", "scalePoints": 6, "text": "因为玩手机，计划内的事没做成。", "dimension": "total" },
+  { "id": "q2", "type": "scale", "scalePoints": 6, "text": "一边用手机一边上课/干活时，注意力很难集中。", "dimension": "total" },
+  { "id": "q3", "type": "scale", "scalePoints": 6, "text": "玩手机久了，手腕或后脖颈会疼。", "dimension": "total" },
+  { "id": "q4", "type": "scale", "scalePoints": 6, "text": "手机不在身边我会很难受。", "dimension": "total" },
+  { "id": "q5", "type": "scale", "scalePoints": 6, "text": "没法用手机的时候，我会变得烦躁不耐。", "dimension": "total" },
+  { "id": "q6", "type": "scale", "scalePoints": 6, "text": "就算没在用手机，心里也一直惦记着它。", "dimension": "total" },
+  { "id": "q7", "type": "scale", "scalePoints": 6, "text": "即使玩手机已经影响到日常生活，我也不会放弃使用。", "dimension": "total" },
+  { "id": "q8", "type": "scale", "scalePoints": 6, "text": "我会不停查看手机，生怕错过什么消息。", "dimension": "total" },
+  { "id": "q9", "type": "scale", "scalePoints": 6, "text": "别人劝我少玩手机时，我会心生逆反。", "dimension": "total" },
+  { "id": "q10", "type": "scale", "scalePoints": 6, "text": "说好「再刷十分钟」，结果严重超时。", "dimension": "total" }
+]

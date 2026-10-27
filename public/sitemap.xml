@@ -186,6 +186,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://greensail.dpdns.org/about/pfs</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://greensail.dpdns.org/about/phq15</loc>
     <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
@@ -227,6 +232,11 @@
   </url>
   <url>
     <loc>https://greensail.dpdns.org/about/sas</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://greensail.dpdns.org/about/sassv</loc>
     <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>

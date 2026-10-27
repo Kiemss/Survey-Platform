@@ -1,0 +1,9 @@
+{
+  "id": "sassv",
+  "name": "手机依赖自测（SAS-SV）",
+  "description": "基于 Kwon 等发表的短版智能手机成瘾量表（SAS-SV，10 题）整理，评估你近一周与手机的关系：是你在玩手机，还是手机在玩你？2 分钟出结果。",
+  "estimatedMinutes": 2,
+  "disclaimer": "本测试题源为公开发表的 Smartphone Addiction Scale-Short Version（Kwon et al., 2013）通行中文版整理。官方截断值：男性 31 分、女性 33 分；本站分界以较严格值参考呈现。结果仅供娱乐与自我觉察，不构成任何诊断；「智能手机成瘾」为研究概念，非临床诊断。",
+  "version": "1.0.0",
+  "category": "lifestyle"
+}
