@@ -1,0 +1,8 @@
+{
+  "strategy": "dimensions",
+  "dimensions": [
+    { "id": "tech", "name": "科技拟人" },
+    { "id": "animal", "name": "动物拟人" },
+    { "id": "nature", "name": "自然拟人" }
+  ]
+}
