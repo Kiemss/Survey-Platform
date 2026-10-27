@@ -31,6 +31,17 @@ let autoTimer: number | undefined
 
 const submitting = ref(false)
 
+// 答题卡导航面板（>10 题的量表显示）
+const sheetOpen = ref(false)
+
+function goTo(i: number) {
+  window.clearTimeout(autoTimer)
+  index.value = i
+  sheetOpen.value = false
+}
+
+const unansweredCount = computed(() => questions.length - answeredCount.value)
+
 function choose(qid: string, value: number) {
   answers[qid] = value
   localStorage.setItem(DRAFT_KEY, JSON.stringify(answers))
@@ -104,7 +115,16 @@ async function submit() {
     </div>
 
     <div class="card question-card">
-      <h2 class="q-text">{{ current.text }}</h2>
+      <div class="q-head">
+        <h2 class="q-text">{{ current.text }}</h2>
+        <button
+          v-if="questions.length > 10"
+          class="sheet-toggle"
+          @click="sheetOpen = !sheetOpen"
+        >
+          答题卡
+        </button>
+      </div>
 
       <!-- single：强迫选择/单选题 -->
       <div v-if="current.type === 'single'" class="options">
@@ -129,6 +149,27 @@ async function submit() {
           @click="choose(current.id, opt.value)"
         >
           {{ opt.label }}
+        </button>
+      </div>
+    </div>
+
+    <div v-if="sheetOpen" class="card answer-sheet">
+      <p class="sheet-title">
+        答题卡 · 已答 {{ answeredCount }}/{{ questions.length }}
+        <span v-if="unansweredCount > 0" class="sheet-warn">（未答 {{ unansweredCount }}）</span>
+      </p>
+      <div class="sheet-grid">
+        <button
+          v-for="(q, i) in questions"
+          :key="q.id"
+          class="sheet-cell"
+          :class="{
+            current: i === index,
+            answered: answers[q.id] !== undefined,
+          }"
+          @click="goTo(i)"
+        >
+          {{ i + 1 }}
         </button>
       </div>
     </div>
@@ -180,6 +221,65 @@ async function submit() {
 }
 .question-card {
   min-height: 220px;
+}
+.q-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.sheet-toggle {
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.sheet-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.answer-sheet {
+  margin-top: 12px;
+  padding: 14px 16px;
+}
+.sheet-title {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.sheet-warn {
+  color: #d46a6a;
+}
+.sheet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.sheet-cell {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--muted);
+  border-radius: 6px;
+  padding: 6px 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+.sheet-cell.answered {
+  background: var(--accent-weak);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.sheet-cell.current {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 600;
 }
 .q-text {
   font-size: 18px;

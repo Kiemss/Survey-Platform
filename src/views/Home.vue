@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { listSurveyIds, getSurveyPackage } from '../engine/loader'
-import { GROUPS, DEFAULT_TAB, getCategory } from '../data/categories'
+import { GROUPS, DEFAULT_TAB, getCategory, getGroup } from '../data/categories'
 
 interface SurveyCard extends Record<string, unknown> {
   id: string
