@@ -18,6 +18,13 @@
 
 ## 2026-10-27（第六次更新：v0.3 启动——学科分类与量表家族）
 
+### 运维事件：Git 集成故障 + 本地直连部署通道建立
+
+- Cloudflare 构建「fetching repository」失败，重连 GitHub 应用并排除权限问题后仍未恢复。
+- **应急方案生效**：本地 `wrangler login`（OAuth）+ `wrangler deploy` 直连部署成功，线上已更新为最新版本（已验证 bundle 指纹）。
+- 后续策略：代码照常推送 GitHub 存档；部署改由本地 `npx wrangler deploy` 完成。若 Cloudflare Git 集成日后恢复，两条通道互不冲突（同一 Worker）。
+- 备注：wrangler 首次运行需临时 npm 缓存（`$env:npm_config_cache="$env:TEMP\npm-cache"`），因全局缓存目录无写权限。
+
 ### 已完成（`d0ec48c`）
 
 1. **一级学科分类**：新增 [categories.ts](src/data/categories.ts) 分类注册表（当前：心理学 🧠 / 趣味测试 🎉），首页改为顶部 Tab 导航（全部 + 各学科，含计数与空状态），量表 manifest 新增 `category` 字段（缺省 psychology）。
