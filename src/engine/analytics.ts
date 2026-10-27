@@ -9,8 +9,10 @@ import type { SurveyResult } from './types'
 export interface AnalyticsService {
   /** 上报一次完成的测评（可选开启） */
   reportResult(result: SurveyResult): Promise<void>
-  /** 读取本机历史记录 */
+  /** 读取本机历史记录（新的在前） */
   getHistory(surveyId?: string): SurveyResult[]
+  /** 删除单条历史记录（按作答时间戳定位） */
+  removeResult(answeredAt: number): void
   /** 清空本机历史记录 */
   clearHistory(): void
 }
@@ -28,10 +30,16 @@ class LocalStorageAnalytics implements AnalyticsService {
   getHistory(surveyId?: string): SurveyResult[] {
     try {
       const list: SurveyResult[] = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]')
-      return surveyId ? list.filter((r) => r.surveyId === surveyId) : list
+      const filtered = surveyId ? list.filter((r) => r.surveyId === surveyId) : list
+      return filtered.sort((a, b) => b.answeredAt - a.answeredAt)
     } catch {
       return []
     }
+  }
+
+  removeResult(answeredAt: number): void {
+    const list = this.getHistory().filter((r) => r.answeredAt !== answeredAt)
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(list))
   }
 
   clearHistory(): void {

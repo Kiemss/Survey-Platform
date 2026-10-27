@@ -2,9 +2,12 @@
   <div class="app">
     <header class="topbar">
       <RouterLink to="/" class="logo">心理测评站</RouterLink>
-      <button class="theme-btn" :title="themeTitle" @click="toggleTheme">
-        {{ isDark ? '🌙' : '☀️' }}
-      </button>
+      <nav class="nav">
+        <RouterLink to="/history" class="nav-link">历史</RouterLink>
+        <button class="theme-btn" :title="themeTitle" @click="toggleTheme">
+          {{ isDark ? '🌙' : '☀️' }}
+        </button>
+      </nav>
     </header>
     <main class="main">
       <RouterView />
@@ -78,6 +81,19 @@ onUnmounted(() => media.removeEventListener('change', onSystemChange))
   line-height: 1;
   padding: 4px;
   border-radius: 6px;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+}
+.nav-link:hover {
+  color: var(--accent);
 }
 .main {
   flex: 1;
