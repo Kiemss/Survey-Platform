@@ -90,8 +90,8 @@ export const CATEGORIES: SurveyCategory[] = [
 /** 量表默认归类（manifest 未声明 category 时落入） */
 export const DEFAULT_CATEGORY = 'psychology'
 
-/** 首页默认选中的 Tab（大类） */
-export const DEFAULT_TAB = 'personality'
+/** 首页默认选中的 Tab（'all' 为全部） */
+export const DEFAULT_TAB = 'all'
 
 export function getGroup(id: string): SurveyGroup {
   return GROUPS.find((g) => g.id === id) ?? GROUPS[0]

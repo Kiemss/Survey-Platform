@@ -15,6 +15,11 @@ export const router = createRouter({
       component: () => import('./views/Quiz.vue'),
     },
     {
+      path: '/about/:id',
+      name: 'about',
+      component: () => import('./views/Detail.vue'),
+    },
+    {
       path: '/result/:id',
       name: 'result',
       component: () => import('./views/ResultView.vue'),
