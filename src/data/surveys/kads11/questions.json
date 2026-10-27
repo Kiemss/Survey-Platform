@@ -1,0 +1,73 @@
+[
+  { "id": "k1", "type": "single", "text": "最近这段时间，我感到悲伤难过、心情低落。", "options": [
+    { "label": "从不，心情一直不错", "score": { "total": 0 } },
+    { "label": "偶尔有，但很快就过去了", "score": { "total": 1 } },
+    { "label": "有些时候是这样", "score": { "total": 2 } },
+    { "label": "很多时候是这样", "score": { "total": 3 } },
+    { "label": "大部分时间是这样", "score": { "total": 4 } },
+    { "label": "几乎一直这样，完全摆脱不了", "score": { "total": 5 } }
+  ] },
+  { "id": "k2", "type": "single", "text": "最近这段时间，我容易心烦，忍不住发脾气。", "options": [
+    { "label": "几乎没有", "score": { "total": 0 } },
+    { "label": "偶尔这样", "score": { "total": 1 } },
+    { "label": "大部分时间这样", "score": { "total": 2 } },
+    { "label": "几乎一直这样", "score": { "total": 3 } }
+  ] },
+  { "id": "k3", "type": "single", "text": "最近这段时间，我入睡困难或睡不安稳。", "options": [
+    { "label": "几乎没有", "score": { "total": 0 } },
+    { "label": "偶尔这样", "score": { "total": 1 } },
+    { "label": "大部分时间这样", "score": { "total": 2 } },
+    { "label": "几乎一直这样", "score": { "total": 3 } }
+  ] },
+  { "id": "k4", "type": "single", "text": "最近这段时间，我难以集中注意力（如上课、看书、做事时）。", "options": [
+    { "label": "几乎没有", "score": { "total": 0 } },
+    { "label": "偶尔这样", "score": { "total": 1 } },
+    { "label": "大部分时间这样", "score": { "total": 2 } },
+    { "label": "几乎一直这样", "score": { "total": 3 } }
+  ] },
+  { "id": "k5", "type": "single", "text": "最近这段时间，我对以前喜欢的事情（爱好、娱乐等）提不起兴趣。", "options": [
+    { "label": "几乎没有", "score": { "total": 0 } },
+    { "label": "偶尔这样", "score": { "total": 1 } },
+    { "label": "大部分时间这样", "score": { "total": 2 } },
+    { "label": "几乎一直这样", "score": { "total": 3 } }
+  ] },
+  { "id": "k6", "type": "single", "text": "最近这段时间，我不愿见朋友，也不愿参加平时的交往活动。", "options": [
+    { "label": "几乎没有", "score": { "total": 0 } },
+    { "label": "偶尔这样", "score": { "total": 1 } },
+    { "label": "大部分时间这样", "score": { "total": 2 } },
+    { "label": "几乎一直这样", "score": { "total": 3 } }
+  ] },
+  { "id": "k7", "type": "single", "text": "最近这段时间，我感到疲乏无力，精力不足。", "options": [
+    { "label": "几乎没有", "score": { "total": 0 } },
+    { "label": "偶尔这样", "score": { "total": 1 } },
+    { "label": "大部分时间这样", "score": { "total": 2 } },
+    { "label": "几乎一直这样", "score": { "total": 3 } }
+  ] },
+  { "id": "k8", "type": "single", "text": "最近这段时间，我觉得自己没有价值，常常自责。", "options": [
+    { "label": "几乎没有", "score": { "total": 0 } },
+    { "label": "偶尔这样", "score": { "total": 1 } },
+    { "label": "大部分时间这样", "score": { "total": 2 } },
+    { "label": "几乎一直这样", "score": { "total": 3 } }
+  ] },
+  { "id": "k9", "type": "single", "text": "最近这段时间，我对将来感到悲观，看不到希望。", "options": [
+    { "label": "几乎没有", "score": { "total": 0 } },
+    { "label": "偶尔这样", "score": { "total": 1 } },
+    { "label": "大部分时间这样", "score": { "total": 2 } },
+    { "label": "几乎一直这样", "score": { "total": 3 } }
+  ] },
+  { "id": "k10", "type": "single", "text": "最近这段时间，我有过「死了会更好」之类的念头。", "options": [
+    { "label": "从来没有", "score": { "total": 0 } },
+    { "label": "偶尔闪过这样的念头", "score": { "total": 1 } },
+    { "label": "时常有这样的念头", "score": { "total": 2 } },
+    { "label": "经常有这样的念头", "score": { "total": 3 } }
+  ] },
+  { "id": "k11", "type": "single", "text": "关于伤害自己，最近这段时间你的情况是——", "options": [
+    { "label": "我完全没有伤害自己的念头", "score": { "total": 0 } },
+    { "label": "我偶尔觉得活着累，但没有想过伤害自己", "score": { "total": 1 } },
+    { "label": "我偶尔想到死亡，但没想过伤害自己", "score": { "total": 2 } },
+    { "label": "我时常想到伤害自己，但从未付诸行动", "score": { "total": 3 } },
+    { "label": "我有过自伤行为（如抓伤、割伤自己）", "score": { "total": 4 } },
+    { "label": "我多次自伤，或认真计划过自伤", "score": { "total": 5 } },
+    { "label": "我曾试图结束自己的生命", "score": { "total": 6 } }
+  ] }
+]

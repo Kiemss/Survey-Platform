@@ -1,0 +1,9 @@
+{
+  "id": "gds",
+  "name": "老年抑郁量表（GDS）",
+  "description": "Brink 与 Yesavage 编制的老年抑郁量表（30 题，是/否作答），专为老年群体设计，评估你最近一周的情绪状态。请根据最近一周的真实感受作答，符合选「是」，不符合选「否」。",
+  "estimatedMinutes": 5,
+  "disclaimer": "GDS 针对老年群体设计，非诊断工具；结果仅供自我探索参考，不构成医学诊断；如有困扰请寻求专业帮助。",
+  "version": "1.0.0",
+  "category": "depression"
+}
