@@ -24,5 +24,15 @@ export const router = createRouter({
       name: 'result',
       component: () => import('./views/ResultView.vue'),
     },
+    {
+      path: '/disclaimer',
+      name: 'disclaimer',
+      component: () => import('./views/Disclaimer.vue'),
+    },
+    {
+      path: '/privacy',
+      name: 'privacy',
+      component: () => import('./views/Privacy.vue'),
+    },
   ],
 })

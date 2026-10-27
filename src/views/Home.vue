@@ -96,15 +96,6 @@ const testedIds = new Set(analytics.getHistory().map((r) => r.surveyId))
 
 <template>
   <div>
-    <section class="hero">
-      <p class="hero-title font-display">心理测评站</p>
-      <p class="hero-slogan">免费 · 专业 · 隐私优先的心理自评平台</p>
-      <div class="hero-badges">
-        <span class="hero-badge">🔒 数据只存你的浏览器</span>
-        <span class="hero-badge">📋 {{ surveys.length }} 个专业量表</span>
-      </div>
-    </section>
-
     <h1>选择一项测评</h1>
 
     <input
@@ -189,41 +180,6 @@ const testedIds = new Set(analytics.getHistory().map((r) => r.surveyId))
 </template>
 
 <style scoped>
-/* 首页 hero 横幅：品牌渐变卡，深浅色均以白字呈现 */
-.hero {
-  border-radius: 12px;
-  padding: 28px 20px;
-  background: linear-gradient(135deg, var(--accent) 0%, #8a5cf6 100%);
-  color: #fff;
-  text-align: center;
-  margin-bottom: 24px;
-}
-.hero-title {
-  margin: 0;
-  font-size: 30px;
-  font-weight: 800;
-  letter-spacing: 2px;
-  line-height: 1.3;
-}
-.hero-slogan {
-  margin: 8px 0 14px;
-  font-size: 14px;
-  opacity: 0.92;
-}
-.hero-badges {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.hero-badge {
-  background: rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 999px;
-  padding: 4px 12px;
-  font-size: 12px;
-  white-space: nowrap;
-}
 .search {
   width: 100%;
   border: 1px solid var(--line);
@@ -384,17 +340,6 @@ const testedIds = new Set(analytics.getHistory().map((r) => r.surveyId))
   color: var(--text);
 }
 @media (max-width: 480px) {
-  .hero {
-    padding: 20px 14px;
-    margin-bottom: 16px;
-  }
-  .hero-title {
-    font-size: 24px;
-  }
-  .hero-slogan {
-    font-size: 13px;
-    margin-bottom: 10px;
-  }
   .cat-tab {
     padding: 8px 12px;
     font-size: 13px;

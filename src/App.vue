@@ -51,7 +51,8 @@
     </main>
     <footer class="footer">
       <div class="footer-line">
-        <span>© 2026 Kiemss · 本站测评仅供自我探索参考，不构成医学诊断</span>
+        <RouterLink to="/disclaimer" class="footer-link">免责声明</RouterLink>
+        <RouterLink to="/privacy" class="footer-link">隐私政策</RouterLink>
         <a
           href="https://github.com/Kiemss/Survey-Platform"
           target="_blank"
@@ -60,6 +61,9 @@
         >
           GitHub 开源
         </a>
+      </div>
+      <div class="footer-line footer-sub">
+        <span>© 2026 Kiemss · 本站测评仅供自我探索参考，不构成医学诊断</span>
       </div>
     </footer>
   </div>
@@ -266,6 +270,9 @@ onUnmounted(() => {
 .footer-link:hover {
   color: var(--accent);
   border-bottom-color: var(--accent);
+}
+.footer-sub {
+  margin-top: 6px;
 }
 @media (max-width: 480px) {
   .topbar {
