@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/validate-surveys.mjs",
     "build": "vite build",
+    "validate": "node scripts/validate-surveys.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

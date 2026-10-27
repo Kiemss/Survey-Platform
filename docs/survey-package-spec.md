@@ -129,5 +129,6 @@ key 必须覆盖所有可能的 resultId：
 
 1. 需要新学科分类时，先在 `src/data/categories.ts` 追加；
 2. 在 `src/data/surveys/` 下新建文件夹并放入 JSON（独立量表 4 个；家族模板 3 个，results 放家族目录）；
-3. `npm run dev` 本地核对题目与计分；
-4. 提交推送，Cloudflare Pages 自动部署上线。
+3. 运行 `npm run validate` 自检（manifest 字段、题目/计分键对齐、结果文案覆盖等 20 余条规则，中文报错定位到题）；
+4. `npm run dev` 本地核对题目与计分；
+5. 提交推送——**部署前 Cloudflare 会自动再跑一遍校验**（已挂 prebuild），坏题库会直接构建失败上不了线。

@@ -16,6 +16,23 @@
 
 ---
 
+## 2026-10-27（第六次更新：v0.3 启动——学科分类与量表家族）
+
+### 已完成（`d0ec48c`）
+
+1. **一级学科分类**：新增 [categories.ts](src/data/categories.ts) 分类注册表（当前：心理学 🧠 / 趣味测试 🎉），首页改为顶部 Tab 导航（全部 + 各学科，含计数与空状态），量表 manifest 新增 `category` 字段（缺省 psychology）。
+2. **量表家族机制**：同一量表的多套模板（如 MBTI 93 题完整版 / 未来简版）共享一份结果文案——`families/<family>/results.json`；manifest 新增 `family` / `variant` 字段；加载优先级：量表包内 results.json > 家族共享。MBTI 已迁移为家族模式（改名「MBTI 人格类型测评（完整版）」，卡片显示「完整版 93 题」标签）。
+3. **文档**：[survey-package-spec.md](docs/survey-package-spec.md) 升级 v2（学科分类、家族机制、新目录结构、上架步骤更新）。
+4. 浏览器实测 6/6 通过（Tab 切换/计数/空状态/家族文案加载/无报错）。
+
+### 待办（v0.3 剩余）
+
+1. 题库格式校验脚本（上架前自检 manifest/questions/scoring/results 一致性）
+2. 大五人格 BFI-44（psychology 分类）
+3. 趣味测试首秀：1-2 个搞笑测试（fun 分类，single 题型 + 自定义 resultId）
+
+---
+
 ## 2026-10-27（第五次更新：v0.2 启动 + 自定义域名绑定）
 
 ### 已完成（v0.2 第二批，`95b3423`）
